@@ -1,0 +1,12 @@
+diff-so-fancy
+fzf
+
+oh-my-zsh plugins
+    forgit
+    zsh-autosuggestions
+
+vim plugins
+    ale
+    fzf
+    lightline
+    polyglot    
