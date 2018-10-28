@@ -4,13 +4,12 @@
 
 # Update ubuntu packages and clean up
 sudo apt update ; sudo apt full-upgrade ; sudo apt autoremove ; sudo apt autoclean
-sudo apt autoremove ; sudo apt autoclean
 
 # Update oh-my-zsh (and its built-in themes and plugins)
 upgrade_oh_my_zsh
 
 # Update fzf
-cd ~/.fzf ; git pull ; ./install --key-bindings --no-completion --no-bash --no-fish --no-update-rc ; cd -
+pushd ~/.fzf ; git pull ; ./install --key-bindings --no-completion --no-bash --no-fish --no-update-rc ; popd
 
 # Update vim plugins (using git submodules)
 vim-plug-update
