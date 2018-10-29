@@ -5,7 +5,7 @@ if has("autocmd")
     filetype plugin indent on
     autocmd FileType py,python,hs setlocal shiftwidth=4 tabstop=4 colorcolumn=80 foldmethod=indent
     autocmd FileType c,h,java,cpp,hpp,rs,sh,css,js,go setlocal shiftwidth=3 tabstop=3 colorcolumn=80 foldmethod=indent
-    autocmd FileType html,xml,markdown,md setlocal shiftwidth=2 tabstop=2 colorcolumn=120 foldmethod=indent
+    autocmd FileType html,xml,markdown,md setlocal shiftwidth=2 tabstop=2 colorcolumn=120
 endif
 
 set synmaxcol=0
