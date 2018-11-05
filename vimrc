@@ -28,6 +28,7 @@ command WQ wq
 set autoread
 
 let mapleader = ","
+noremap <leader>ff :set foldenable!<cr>
 noremap <leader>pp :setlocal paste!<cr>
 noremap <leader>cp !pbcopy; pbpaste<cr>
 noremap <leader>ss :setlocal spell!<cr>
@@ -46,7 +47,7 @@ map <PageUp> :bprev<CR>
 
 set rtp+=~/.fzf
 nmap ; :Buffers<cr>
-nmap <leader>t :Files<cr>
+nmap <leader>e :Files<cr>
 nmap <leader>r :Tags<cr>
 
 " ALE
