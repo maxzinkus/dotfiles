@@ -10,6 +10,8 @@ endif
 
 set synmaxcol=0
 
+set background=dark
+
 set mouse=""
 
 set rnu
@@ -20,6 +22,18 @@ set smarttab
 set expandtab
 set breakindent
 
+set cursorline
+
+" Don't go to Ex mode
+map Q <Nop>
+
+"Pasting should be at the right indent level
+map p ]p
+map P ]P
+
+" + saves all and compiles (runs make)
+nnoremap + :wa<bar>:make<bar><CR>
+
 command W w
 command Q q
 command Wq wq
@@ -28,6 +42,7 @@ command WQ wq
 set autoread
 
 let mapleader = ","
+noremap <leader>q :wq<cr>
 noremap <leader>ff :set foldenable!<cr>
 noremap <leader>pp :setlocal paste!<cr>
 noremap <leader>cp !pbcopy; pbpaste<cr>
