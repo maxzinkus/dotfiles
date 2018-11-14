@@ -21,7 +21,9 @@ wget --no-verbose -O $dsftmp $dsfurl
 if [ $(sha256sum $dsftmp | awk '{ print $1 }') != $(sha256sum ~/.local/bin/diff-so-fancy | awk '{ print $1 }') ]
 then echo "Updating diff-so-fancy" ; cp $dsftmp ~/.local/bin/diff-so-fancy ; chmod +x ~/.local/bin/diff-so-fancy
 fi
-rm $dsftmp
+if [ -f $dsftmp ]
+then rm $dsftmp
+fi
 
 # Update custom oh-my-zsh plugins (sadly doesn't play nice with submodules)
 pushd ~/.oh-my-zsh/custom/plugins
