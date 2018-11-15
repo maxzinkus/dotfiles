@@ -33,3 +33,7 @@ do if [ "$plugin" != "example" ]
     fi
 done
 popd
+
+pushd ~
+touch .last-update-run
+popd

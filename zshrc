@@ -77,3 +77,15 @@ export TERM=xterm-256color
 export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 export FZF_ALT_C_OPTS="--preview 'ls {} 2>/dev/null | head -200'"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+alias spotify="/snap/spotify/current/usr/share/spotify/spotify --force-device-scale-factor=2 >/dev/null 2>&1 &"
+
+if [ -f ~/.last-update-run ]
+then if [ $(date -Idate -r ~/.last-update-run) != $(date -Idate) ] # if we haven't asked today
+    then read -q "REPLY?Would you like to update? [y/N] " ; if [ $REPLY = "y" ] # ask to update
+        then echo "" ; ~/.local/bin/update.zsh # update
+        else echo "" ; touch .last-update-run # or don't ask again today
+        fi
+    fi
+else echo "Updating..." ; ~/.local/bin/update.zsh # if we've never updated, update
+fi
