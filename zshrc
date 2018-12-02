@@ -82,10 +82,10 @@ alias spotify="/snap/spotify/current/usr/share/spotify/spotify --force-device-sc
 
 if [ -f ~/.last-update-run ]
 then if [ $(date -Idate -r ~/.last-update-run) != $(date -Idate) ] # if we haven't asked today
-    then read -q "REPLY?Would you like to update? [y/N] " ; if [ $REPLY = "y" ] # ask to update
-        then echo "" ; ~/.local/bin/update.zsh # update
-        else echo "" ; touch ~/.last-update-run # or don't ask again today
+    then touch ~/.last-update-run
+        read -q "REPLY?Would you like to update? [y/N] "
+        if [ $REPLY = "y" ]
+        then echo "" ; ~/.local/bin/update.zsh
         fi
     fi
-else echo "Updating..." ; ~/.local/bin/update.zsh # if we've never updated, update
 fi
