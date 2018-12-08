@@ -41,9 +41,16 @@ HIST_SAVE_NO_DUPS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
-  zsh-autosuggestions
-  forgit
+  git                 # not actually sure what this does
+  zsh-autosuggestions # suggest last matching command
+  forgit              # beautiful git w/fzf+diff-so-fancy
+                      # ga: git add
+                      # glo: git log
+                      # gi: gitignore builder
+                      # gd: git diff
+                      # gcf: git checkout
+                      # gss: git stash
+                      # gclean: git clean
 )
 
 ZSH_AUTOSUGGEST_USE_ASYNC="true"
@@ -66,6 +73,7 @@ export PATH="$PATH:/home/user/.local/bin"
 # For a full list of active aliases, run `alias`.
 #
 # non-interactive in .zshenv
+alias v='vim'
 alias ifconfig="echo 'ip a?'"
 alias gs='git status'
 alias mv='mv -i'
