@@ -1,7 +1,13 @@
+" push more characters through to the terminal per cycle
 set ttyfast
+
+" indent settings for common languages
 set shiftwidth=4
 set tabstop=4
-
+set smartindent
+set smarttab
+set expandtab
+set breakindent
 if has("autocmd")
     filetype plugin indent on
     autocmd FileType py,python,hs setlocal shiftwidth=4 tabstop=4 colorcolumn=80 foldmethod=indent
@@ -10,9 +16,13 @@ if has("autocmd")
 endif
 
 set synmaxcol=1024
+
+" make command/keycode timeouts behave reasonably
 set notimeout
 set ttimeout
 set ttimeoutlen=10
+
+" don't leave a mess
 set backup
 set backupdir=~/.vim/backup
 set noswapfile
@@ -21,16 +31,12 @@ au VimResized * :wincmd =
 
 set background=dark
 
+" disable mouse
 set mouse=""
 
+" set behavior for line numbers and current line
 set rnu
 set number
-
-set smartindent
-set smarttab
-set expandtab
-set breakindent
-
 set cursorline
 
 " Don't go to Ex mode
@@ -40,9 +46,10 @@ map Q <Nop>
 map p ]p
 map P ]P
 
-" + saves all and compiles (runs make)
+" + save all and compiles (runs make)
 nnoremap + :wa<bar>:make<bar><CR>
 
+" sometimes I get off the shift key too slowly
 command W w
 command Q q
 command Wq wq
@@ -143,19 +150,18 @@ augroup END
 
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
-function! MyFoldText() " {{{
+function! MyFoldText()
     let line = getline(v:foldstart)
-
     let nucolwidth = &fdc + &number * &numberwidth
     let windowwidth = winwidth(0) - nucolwidth - 3
     let foldedlinecount = v:foldend - v:foldstart
-
     let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
     let fillcharcount = windowwidth - strdisplaywidth(line) - len(foldedlinecount)
     return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
-endfunction " }}}
+endfunction
 set foldtext=MyFoldText()
 highlight Folded ctermfg=darkgrey ctermbg=NONE
+set nofoldenable
 
 packloadall
 silent! helptags ALL
