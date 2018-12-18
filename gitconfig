@@ -22,3 +22,7 @@
 [user]
 	name = Max
 	email = 5474655+maxzinkus@users.noreply.github.com
+[init]
+	templatedir = ~/.config/git_template
+[alias]
+	ctags = !.git/hooks/ctags
