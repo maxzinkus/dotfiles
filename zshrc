@@ -60,11 +60,6 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
 export PATH="$PATH:/home/user/.local/bin"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
@@ -73,6 +68,7 @@ export PATH="$PATH:/home/user/.local/bin"
 # For a full list of active aliases, run `alias`.
 #
 # non-interactive in .zshenv
+alias x='xdg-open'
 alias v='vim'
 alias ifconfig="echo 'ip a?'"
 alias gs='git status'
