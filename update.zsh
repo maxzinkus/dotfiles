@@ -3,18 +3,22 @@
 # One script to bring them all and in the darkness update them
 
 # Update ubuntu packages and clean up
+echo "apt update"
 sudo apt update ; sudo apt full-upgrade ; sudo apt autoremove ; sudo apt autoclean
 
 # Update oh-my-zsh (and its built-in themes and plugins)
 upgrade_oh_my_zsh
 
 # Update fzf
+echo "Updating fzf"
 pushd ~/.fzf ; git pull ; ./install --key-bindings --no-completion --no-bash --no-fish --no-update-rc ; popd
 
 # Update vim plugins (using git submodules)
+echo "Updating vim plugins"
 vim-plug-update
 
 # Check for diff-so-fancy updates by comparing hashes, and update if needed
+echo "Updating diff-so-fancy"
 local dsfurl="https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy"
 local dsftmp=$(mktemp)
 wget --no-verbose -O $dsftmp $dsfurl
