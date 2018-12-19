@@ -58,6 +58,8 @@ command WQ wq
 set autoread
 
 let mapleader = ","
+noremap <leader>v :vsplit<cr>
+noremap <leader>b :split<cr>
 noremap <leader>q :wq<cr>
 noremap <leader>ff :set foldenable!<cr>
 noremap <leader>pp :setlocal paste!<cr>
@@ -93,7 +95,6 @@ if has('gui_running')
     set t_Co=256
 endif
 let g:lightline = {
-            \ 'colorscheme': 'wombat',
             \ 'active': {
             \   'left': [['mode', 'paste'], ['filename', 'modified']],
             \   'right': [['lineinfo'], ['percent'], ['readonly', 'linter_warnings', 'linter_errors', 'linter_ok']]
