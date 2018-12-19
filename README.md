@@ -13,10 +13,6 @@ equivalent of Debian*
 
 # Other tools, plugins and such
 
-aptitude-installed stuff
----------
-* ripgrep
-
 from github
 -----------
 * diff-so-fancy

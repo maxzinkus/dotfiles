@@ -76,10 +76,6 @@ alias mv='mv -i'
 function evince() {
     /usr/bin/evince $@ >/dev/null 2>&1 &
 }
-unalias grep
-function grep() {
-    /usr/bin/rg -S --hidden -n $@
-}
 
 export TERM=xterm-256color
 export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
