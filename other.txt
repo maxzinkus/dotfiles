@@ -1,3 +1,5 @@
+Other plugins and such
+
 diff-so-fancy
 fzf
 
@@ -10,3 +12,4 @@ vim plugins
     fzf
     lightline
     polyglot    
+    fugitive
