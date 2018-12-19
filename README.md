@@ -10,3 +10,27 @@ equivalent of Debian*
 *goes to the effort to turn Vim into a full IDE*
 #logic
 ```
+
+# Other tools, plugins and such
+
+aptitude-installed stuff
+---------
+* ripgrep
+
+from github
+-----------
+* diff-so-fancy
+* fzf
+
+oh-my-zsh plugins
+-----------------
+* forgit
+* zsh-autosuggestions
+
+vim plugins
+-----------
+* ale
+* fzf
+* lightline
+* polyglot
+* fugitive
