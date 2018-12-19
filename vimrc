@@ -124,8 +124,8 @@ map <PageUp> :bprev<CR>
 set rtp+=~/.fzf
 nmap ; :Buffers<cr>
 nmap <leader>e :Files<cr>
-nmap <leader>r :Tags<cr>
-nmap <leader>t :Marks<cr>
+nmap <leader>r :Marks<cr>
+nmap <leader>t :Tags<cr>
 
 " ALE
 let g:ale_sign_warning = '▲'
