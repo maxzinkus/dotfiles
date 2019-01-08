@@ -68,9 +68,10 @@ export PATH="$PATH:/home/user/.local/bin"
 # For a full list of active aliases, run `alias`.
 #
 # non-interactive in .zshenv
+alias dc='cd'
 alias x='xdg-open'
 alias v='vim'
-alias ifconfig="echo 'ip a?'"
+alias ifconfig='ip a'
 alias gs='git status'
 alias mv='mv -i'
 function evince() {
