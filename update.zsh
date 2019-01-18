@@ -37,3 +37,5 @@ do if [ "$plugin" != "example" ]
     fi
 done
 popd
+
+touch ~/.last-update-run
