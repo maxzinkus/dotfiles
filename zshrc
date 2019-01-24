@@ -84,8 +84,8 @@ export FZF_ALT_C_OPTS="--preview 'ls {} 2>/dev/null | head -200'"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # snap applications
-alias spotify="/snap/spotify/current/usr/share/spotify/spotify --force-device-scale-factor=2 >/dev/null 2>&1 &"
-alias slack="/snap/slack/current/usr/bin/slack >/dev/null 2>&1 &"
+alias spotify="/snap/spotify/current/usr/share/spotify/spotify --force-device-scale-factor=2 >/dev/null 2>&1 &|"
+alias slack="/snap/slack/current/usr/bin/slack >/dev/null 2>&1 &|"
 
 if [ -f ~/.last-update-run ]
 then if [ $(date -Idate -r ~/.last-update-run) != $(date -Idate) ] # if we haven't asked today
