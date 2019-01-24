@@ -4,14 +4,14 @@ alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 
 function vim-plug() {
-    pushd ~/.vim/pack >/dev/null
-    if [ $ARGC -eq 2 ] && [ ! -e "plugins/start/$1" ]
-    then git submodule add "$2" "plugins/start/$1" &&
+    if [ $ARGC -eq 2 ] && [ ! -e ~/.vim/pack/plugins/start/"$1" ]
+    then pushd ~/.vim/pack >/dev/null
+        git submodule add "$2" "plugins/start/$1" &&
         git add .gitmodules "plugins/start/$1" &&
         git commit -m "Add plugin $1"
+        popd >/dev/null
     else echo "usage: vim-plug <name> <git remote>" ; return 1
     fi
-    popd >/dev/null
 }
 
 function vim-plug-update() {
@@ -22,7 +22,7 @@ function vim-plug-update() {
 }
 
 function vim-plug-remove() {
-    if [ $ARGC -eq 1 ] && [ -d "~/.vim/pack/plugins/start/$1" ] && [ -n "$1" ]
+    if [ $ARGC -eq 1 ] && [ -d ~/.vim/pack/plugins/start/"$1" ] && [ -n "$1" ]
     then if read -q "TEMP?Remove plugin $1? [y/N] "
         then pushd ~/.vim/pack >/dev/null
             git submodule deinit "plugins/start/$1" ;
