@@ -74,6 +74,7 @@ alias v='vim'
 alias ifconfig='ip a'
 alias gs='git status'
 alias mv='mv -i'
+alias cp='cp -i'
 function evince() {
     /usr/bin/evince $@ >/dev/null 2>&1 &
 }
