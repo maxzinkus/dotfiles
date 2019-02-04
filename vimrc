@@ -16,6 +16,9 @@ if has("autocmd")
     autocmd FileType html,xml,markdown,md setlocal shiftwidth=2 tabstop=2 colorcolumn=120
 endif
 
+" assume s/../../g
+set gdefault
+
 " folding
 " space bar toggles fold open/closed
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
