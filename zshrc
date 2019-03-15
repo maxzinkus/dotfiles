@@ -75,6 +75,7 @@ alias ifconfig='ip a'
 alias gs='git status'
 alias mv='mv -i'
 alias cp='cp -i'
+alias s='systemctl'
 function evince() {
     /usr/bin/evince $@ >/dev/null 2>&1 &
 }
@@ -96,4 +97,8 @@ then if [ $(date -Idate -r ~/.last-update-run) != $(date -Idate) ] # if we haven
         then echo "" ; ~/.local/bin/update.zsh
         fi
     fi
+fi
+
+if [ $USER != "user" ]
+then export PROMPT="$(whoami) $PROMPT"
 fi
