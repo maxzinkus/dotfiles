@@ -1,6 +1,7 @@
 #!/usr/bin/zsh
 
 # One script to bring them all and in the darkness update them
+ping -c1 -q example.com >/dev/null 2>&1 || (echo "Can't update, no internet connection." 1>&2 && kill $$)
 
 # Update ubuntu packages and clean up
 echo -e "\e[34mapt update\e[0m"
