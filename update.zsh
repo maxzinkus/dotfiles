@@ -19,10 +19,10 @@ echo -e "\e[34mUpdating vim plugins\e[0m"
 vim-plug-update
 
 # Check for diff-so-fancy updates by comparing hashes, and update if needed
-echo -e "\e[34mUpdating diff-so-fancy\e[0m"
+echo -e "\e[34mChecking diff-so-fancy for updates\e[0m"
 local dsfurl="https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy"
 local dsftmp=$(mktemp)
-wget --no-verbose -O $dsftmp $dsfurl
+wget -q -O $dsftmp $dsfurl
 if [ $(sha256sum $dsftmp | awk '{ print $1 }') != $(sha256sum ~/.local/bin/diff-so-fancy | awk '{ print $1 }') ]
 then echo -e "\e[34mUpdating diff-so-fancy\e[0m" ; cp $dsftmp ~/.local/bin/diff-so-fancy ; chmod +x ~/.local/bin/diff-so-fancy
 fi
