@@ -13,7 +13,7 @@ if has("autocmd")
     filetype plugin indent on
     autocmd FileType py,python,hs setlocal shiftwidth=4 tabstop=4 colorcolumn=80
     autocmd FileType c,h,java,cpp,hpp,rs,sh,css,js,go setlocal shiftwidth=3 tabstop=3 colorcolumn=80
-    autocmd FileType html,xml,markdown,md setlocal shiftwidth=2 tabstop=2 colorcolumn=120
+    autocmd FileType html,xml,markdown,md,txt,text setlocal shiftwidth=2 tabstop=2 colorcolumn=80 textwidth=80
 endif
 
 " assume s/../../g
@@ -79,10 +79,6 @@ noremap <C-RIGHT> <C-w>l
 
 " Don't go to Ex mode
 map Q <Nop>
-
-"Pasting should be at the right indent level
-map p ]p
-map P ]P
 
 " + write out buffers and run make
 nnoremap + :wa<bar>:make<bar><CR>
