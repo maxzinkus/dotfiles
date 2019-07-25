@@ -17,7 +17,7 @@ CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -41,17 +41,22 @@ HIST_SAVE_NO_DUPS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git                 # not actually sure what this does
-  zsh-autosuggestions # suggest last matching command
-  forgit              # beautiful git w/fzf+diff-so-fancy
-                      # ga: git add
-                      # glo: git log
-                      # gi: gitignore builder
-                      # gd: git diff
-                      # gcf: git checkout
-                      # gss: git stash
-                      # gclean: git clean
+  fast-syntax-highlighting  # highlighting commands as I write them?
+  zsh-vim-mode              # improve bindkey -v
+  zsh-autosuggestions       # suggest last matching command
+  forgit                    # beautiful git w/fzf+diff-so-fancy
 )
+
+function forgit() { # just in case I... forgit XD
+    echo "forgit usage"
+    echo "glo   : git log"
+    echo "gd    : git diff"
+    echo "ga    : git add"
+    echo "gi    : gitignore builder"
+    echo "gcf   : git checkout"
+    echo "gss   : git stash"
+    echo "gclean: git clean"
+}
 
 ZSH_AUTOSUGGEST_USE_ASYNC="true"
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=80
@@ -69,8 +74,8 @@ export PATH="$PATH:/home/user/.local/bin"
 #
 # non-interactive in .zshenv
 alias dc='cd'
-alias pd=pushd
-alias od=popd
+alias o=pushd
+alias p=popd
 alias x='xdg-open'
 alias v='vim'
 alias ifconfig='ip a'
