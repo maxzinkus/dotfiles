@@ -1,11 +1,16 @@
 #!/usr/bin/zsh
 
 # One script to bring them all and in the darkness update them
+
+# Don't update if we can't get DNS and ICMP
 ping -c1 -q example.com >/dev/null 2>&1 || (echo "Can't update, no internet connection." 1>&2 && kill $$)
 
 # Update ubuntu packages and clean up
 echo -e "\e[34mapt update\e[0m"
 sudo apt update ; sudo apt full-upgrade ; sudo apt autoremove ; sudo apt autoclean
+
+# Drop privs in case any of the scripts below try something cheeky
+sudo -K
 
 # Update oh-my-zsh (and its built-in themes and plugins)
 upgrade_oh_my_zsh
