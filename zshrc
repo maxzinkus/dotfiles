@@ -110,3 +110,6 @@ fi
 if [ $USER != "user" ]
 then export PROMPT="$(whoami) $PROMPT"
 fi
+
+bindkey "^p" push-line
+bindkey "^o" get-line
