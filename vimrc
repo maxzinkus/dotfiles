@@ -114,6 +114,17 @@ noremap <leader>pp :setlocal paste!<cr>
 " deleted
 noremap <leader>cp !pbcopy; pbpaste<cr>
 
+" Vimdiff
+if has("patch-8.1.0360")
+    set diffopt+=internal,algorithm:patience
+endif
+" git mergetool
+" :diffget LOCAL == accept local branch's changes
+" :diffget BASE == reject both local and remote changes
+" :diffget REMTOE == accept remote branch's changes
+" :wqa to accept and quit
+" :cq to reject and quit
+
 " Spellcheck
 " toggle spellcheck
 noremap <leader>ss :setlocal spell!<cr>

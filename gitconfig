@@ -3,6 +3,10 @@
 	pager = diff-so-fancy | less --tabs=4 -RFX
 [merge]
     ff = only
+	tool = vimdiff
+	conflictstyle = diff3
+[mergetool]
+	prompt = false
 [status]
     show-untracked-files = all
 [color]
