@@ -118,6 +118,9 @@ noremap <leader>cp !pbcopy; pbpaste<cr>
 if has("patch-8.1.0360")
     set diffopt+=internal,algorithm:patience
 endif
+noremap <leader>1 :diffget LOCAL; diffupdate<cr>
+noremap <leader>2 :diffget BASE; diffupdate<cr>
+noremap <leader>3 :diffget REMOTE; diffupdate<cr>
 " git mergetool
 " :diffget LOCAL == accept local branch's changes
 " :diffget BASE == reject both local and remote changes
