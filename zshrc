@@ -113,3 +113,8 @@ fi
 
 bindkey "^p" push-line
 bindkey "^o" get-line
+
+autoload -Uz compinit
+compinit
+# Completion for kitty
+kitty + complete setup zsh | source /dev/stdin
