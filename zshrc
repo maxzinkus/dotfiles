@@ -77,6 +77,7 @@ export PATH="$PATH:/home/user/.local/bin"
 alias dc='cd'
 alias o=pushd
 alias p=popd
+alias grep='rg'
 alias x='xdg-open'
 alias v='fzf --preview "(highlight -l -O ansi {} 2>/dev/null || cat {}) 2>/dev/null" --bind "enter:execute(vim {})+accept"'
 alias ifconfig='ip a'
