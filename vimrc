@@ -60,8 +60,17 @@ function! MyFoldText()
 endfunction
 set foldtext=MyFoldText()
 highlight Folded ctermfg=darkgrey ctermbg=NONE
-" start with folding off
-"set nofoldenable
+" start with folding off unless file is large
+setlocal nofoldenable
+function Detectfold()
+   if line('$') > winheight(0)
+      setlocal foldenable
+   else
+      setlocal nofoldenable
+   endif
+endfunction
+au VimEnter * :call Detectfold()
+
 " toggle folding
 noremap <leader>ff :set foldenable!<cr>
 
