@@ -8,7 +8,8 @@ export ZSH="/home/user/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+#ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
 
 # Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="true"
@@ -17,7 +18,7 @@ CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
+#COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -77,21 +78,26 @@ alias dc='cd'
 alias o=pushd
 alias p=popd
 alias x='xdg-open'
-alias v='vim'
+alias v='fzf --preview "(highlight -l -O ansi {} 2>/dev/null || cat {}) 2>/dev/null" --bind "enter:execute(vim {})+accept"'
 alias ifconfig='ip a'
 alias gs='git status'
 alias gc='git commit'
 alias gp='git push'
 alias mv='mv -i'
 alias cp='cp -i'
-alias s='systemctl'
+alias rm='rm -i'
+alias sctl='systemctl'
+alias fd='fdfind'
 function evince() {
     /usr/bin/evince $@ >/dev/null 2>&1 &
 }
 
 export TERM=xterm-256color
-export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
-export FZF_ALT_C_OPTS="--preview 'ls {} 2>/dev/null | head -200'"
+export FZF_DEFAULT_COMMAND="fdfind --type file --follow --hidden --exclude .git --exclude .vim --color=always"
+export FZF_DEFAULT_OPTS="--ansi"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="--ansi --preview '(highlight -l -O ansi {} 2>/dev/null || cat {}) 2>/dev/null'"
+export FZF_ALT_C_OPTS="--preview 'ls --color -d {} 2>/dev/null && ls {} 2>/dev/null'"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # snap applications
@@ -107,7 +113,7 @@ then if [ $(date -Idate -r ~/.last-update-run) != $(date -Idate) ] # if we haven
     fi
 fi
 
-if [ $USER != "user" ]
+if [ $ZSH_THEME != "agnoster" -a $USER != "user" ]
 then export PROMPT="$(whoami) $PROMPT"
 fi
 
