@@ -6,6 +6,7 @@ set autoread
 
 " make colors vibrant
 set background=dark
+source ~/.vim/happy_hacking.vim
 
 " disable mouse
 set mouse=""
@@ -19,33 +20,33 @@ let mapleader = ","
 " behavior for line numbers and current line
 set rnu
 set number
-set cursorline
+"set cursorline
 
 " + to write out buffers and run make
-nnoremap + :wa<bar>:make<bar><CR>
+nnoremap + :wa<bar>:make<bar><cr>
 
 " Indentation and other settings for common languages/formats
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=3
+set tabstop=3
 set smartindent
 set smarttab
 set expandtab
 set breakindent
 set foldmethod=indent
 " don't highlight long lines
-set synmaxcol=1024
+set synmaxcol=256
 
 if has("autocmd")
     filetype plugin indent on
-    autocmd FileType py,python,hs setlocal colorcolumn=80
+    autocmd FileType py,python,hs setlocal shiftwidth=4 tabstop=4 colorcolumn=80
     autocmd FileType c,h,java,cpp,hpp,rust,sh,css,js,go setlocal shiftwidth=3 tabstop=3 colorcolumn=80
-    autocmd FileType rust nnoremap + :wa<bar>:!cargo build<CR>
+    autocmd FileType rust nnoremap + :wa<bar>:!cargo build<cr>
     autocmd FileType html,xml,markdown,md,txt,text setlocal shiftwidth=2 tabstop=2 colorcolumn=80 textwidth=80
 endif
 
 " Folding
 " space bar toggles fold open/closed
-nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<cr>
 vnoremap <Space> zf
 " style folded sections
 function! MyFoldText()
@@ -60,7 +61,7 @@ endfunction
 set foldtext=MyFoldText()
 highlight Folded ctermfg=darkgrey ctermbg=NONE
 " start with folding off
-set nofoldenable
+"set nofoldenable
 " toggle folding
 noremap <leader>ff :set foldenable!<cr>
 
@@ -78,8 +79,6 @@ set backupskip=/tmp/*
 " sane movement through wrapping lines
 noremap j gj
 noremap k gk
-noremap <UP> gk
-noremap <DOWN> gj
 
 " Don't go to Ex mode
 map Q <Nop>
@@ -97,10 +96,10 @@ command WQ wq
 noremap <leader>v :vsplit<cr>
 noremap <leader>b :split<cr>
 " Navigate splits quickly
-noremap <C-LEFT> <C-w>h
-noremap <C-DOWN> <C-w>j
-noremap <C-UP> <C-w>k
-noremap <C-RIGHT> <C-w>l
+noremap <LEFT> <C-w>h
+noremap <DOWN> <C-w>j
+noremap <UP> <C-w>k
+noremap <RIGHT> <C-w>l
 " open without replacing current view
 set splitright
 set splitbelow
@@ -145,8 +144,8 @@ nmap <leader>e :Files<cr>
 nmap <leader>r :Marks<cr>
 nmap <leader>t :Tags<cr>
 " move between open buffers
-map <PageDown> :bnext<CR>
-map <PageUp> :bprev<CR>
+map <PageDown> :bnext<cr>
+map <PageUp> :bprev<cr>
 
 " ALE
 let g:ale_sign_warning = '▲'
