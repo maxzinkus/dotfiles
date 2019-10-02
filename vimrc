@@ -74,6 +74,10 @@ au VimEnter * :call Detectfold()
 " toggle folding
 noremap <leader>ff :set foldenable!<cr>
 
+" Colorizer plugin
+let g:colorizer_fgcontrast=1
+noremap <leader>ct :ColorToggle<cr>
+
 " make command/keycode timeouts behave reasonably
 set notimeout
 set ttimeout
