@@ -89,6 +89,8 @@ alias cp='cp -i'
 alias rm='rm -i'
 alias sctl='systemctl'
 alias fd='fdfind'
+alias lsc='ls -1 | wc -l'
+alias lsca='ls -A1 | wc -l'
 function evince() {
     /usr/bin/evince $@ >/dev/null 2>&1 &
 }
