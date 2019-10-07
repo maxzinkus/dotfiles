@@ -75,8 +75,6 @@ export PATH="$PATH:/home/user/.local/bin"
 #
 # non-interactive in .zshenv
 alias dc='cd'
-alias o=pushd
-alias p=popd
 alias grep='rg'
 alias x='xdg-open'
 alias v='fzf --preview "(highlight -l -O ansi {} 2>/dev/null || cat {}) 2>/dev/null" --bind "enter:execute(vim {})+accept"'
@@ -114,10 +112,6 @@ then if [ $(date -Idate -r ~/.last-update-run) != $(date -Idate) ] # if we haven
         then echo "" ; ~/.local/bin/update.zsh
         fi
     fi
-fi
-
-if [ $ZSH_THEME != "agnoster" -a $USER != "user" ]
-then export PROMPT="$(whoami) $PROMPT"
 fi
 
 bindkey "^p" push-line
