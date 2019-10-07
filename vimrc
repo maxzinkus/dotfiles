@@ -36,14 +36,6 @@ set foldmethod=indent
 " don't highlight long lines
 set synmaxcol=256
 
-if has("autocmd")
-    filetype plugin indent on
-    autocmd FileType py,python,hs setlocal shiftwidth=4 tabstop=4 colorcolumn=80
-    autocmd FileType c,h,java,cpp,hpp,rust,sh,css,js,go setlocal shiftwidth=3 tabstop=3 colorcolumn=80
-    autocmd FileType rust nnoremap + :wa<bar>:!cargo build<cr>
-    autocmd FileType html,xml,markdown,md,txt,text setlocal shiftwidth=2 tabstop=2 colorcolumn=80 textwidth=80
-endif
-
 " Folding
 " space bar toggles fold open/closed
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<cr>
@@ -70,6 +62,15 @@ function Detectfold()
    endif
 endfunction
 au VimEnter * :call Detectfold()
+
+if has("autocmd")
+    filetype plugin indent on
+    autocmd FileType py,python,hs setlocal shiftwidth=4 tabstop=4 colorcolumn=80
+    autocmd FileType c,h,java,cpp,hpp,rust,sh,css,js,go setlocal shiftwidth=3 tabstop=3 colorcolumn=80
+    autocmd FileType rust nnoremap + :wa<bar>:!cargo build<cr>
+    autocmd FileType html,xml,markdown,md,txt,text setlocal shiftwidth=2 tabstop=2 colorcolumn=80
+    autocmd FileType markdown,md,txt,text setlocal textwidth=80 nofoldenable
+endif
 
 " toggle folding
 noremap <leader>ff :set foldenable!<cr>
