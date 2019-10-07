@@ -1,5 +1,4 @@
-Dotfiles
-========
+# Dotfiles
 
 The dotfiles and other configs I use. Exists primarily as a backup and for
 convenient setup on new machines. Started using the kitty shell recently,
@@ -12,31 +11,26 @@ equivalent of Debian*
 #logic
 ```
 
-# Tools, plugins and such that I use in the terminal
-
-from apt
---------
+## from apt
 * tmux
 * vim
 * fdfind
 * ripgrep
 
-from github
------------
-* diff-so-fancy
-* fzf
-
-oh-my-zsh plugins
------------------
+## oh-my-zsh plugins
 * fast-syntax-highlighting
 * zsh-vim-mode
 * zsh-autosuggestions
 * forgit
 
-vim plugins
------------
+## vim plugins
 * ale
 * colorizer
 * fzf
 * lightline
 * polyglot
+
+## other
+* diff-so-fancy
+* fzf
+
