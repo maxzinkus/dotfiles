@@ -75,6 +75,10 @@ endif
 " toggle folding
 noremap <leader>ff :set foldenable!<cr>
 
+" shortcut to CamelCase a word
+" capitalizes the letter under the cursor, and the first letter
+noremap cc vUbvU
+
 " Colorizer plugin
 let g:colorizer_fgcontrast=1
 noremap <leader>ct :ColorToggle<cr>
@@ -126,6 +130,8 @@ noremap <leader>pp :setlocal paste!<cr>
 " pbpaste because pbcopy doesn't output anything, so w/o it the highlight is
 " deleted
 noremap <leader>cp !pbcopy; pbpaste<cr>
+" toggle numbering for pointer selection
+noremap <leader>nn :set number!<cr>:set relativenumber!<cr>
 
 " Vimdiff
 if has("patch-8.1.0360")
