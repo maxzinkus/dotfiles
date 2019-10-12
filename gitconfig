@@ -29,3 +29,5 @@
 	templatedir = ~/.config/git_template
 [alias]
 	ctags = !.git/hooks/ctags
+[rerere]
+   enabled = true
