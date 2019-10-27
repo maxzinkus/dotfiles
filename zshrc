@@ -43,7 +43,6 @@ HIST_SAVE_NO_DUPS="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   fast-syntax-highlighting  # highlighting commands as I write them?
-  zsh-vim-mode              # improve bindkey -v
   zsh-autosuggestions       # suggest last matching command
   forgit                    # beautiful git w/fzf+diff-so-fancy
 )
@@ -89,6 +88,9 @@ alias sctl='systemctl'
 alias fd='fdfind'
 alias lsc='ls -1 | wc -l'
 alias lsca='ls -A1 | wc -l'
+function clang() {
+   /usr/bin/clang --config ~/.config/clang/clang.cfg $@
+}
 function evince() {
     /usr/bin/evince $@ >/dev/null 2>&1 &
 }
@@ -100,6 +102,8 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="--ansi --preview '(highlight -l -O ansi {} 2>/dev/null || cat {}) 2>/dev/null'"
 export FZF_ALT_C_OPTS="--preview 'ls --color -d {} 2>/dev/null && ls {} 2>/dev/null'"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export RIPGREP_CONFIG_PATH="/home/user/.config/ripgrep/ripgrep.conf"
 
 # snap applications
 alias spotify="snap run spotify -force-device-scale-factor=1.75 >/dev/null 2>&1 &|"
