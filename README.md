@@ -19,7 +19,6 @@ equivalent of Debian*
 
 ## oh-my-zsh plugins
 * fast-syntax-highlighting
-* zsh-vim-mode
 * zsh-autosuggestions
 * forgit
 
@@ -33,4 +32,3 @@ equivalent of Debian*
 ## other
 * diff-so-fancy
 * fzf
-
