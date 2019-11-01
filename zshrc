@@ -103,6 +103,11 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="--ansi --preview '(highlight -l -O ansi {} 2>/dev/null || cat {}) 2>/dev/null'"
 export FZF_ALT_C_OPTS="--preview 'ls --color -d {} 2>/dev/null && ls {} 2>/dev/null'"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+function fman() {
+   man -k . | fzf --prompt='Man> ' --preview "man \$(echo {} | awk '{print \$1}')" | awk '{print $1}' | xargs -r man
+}
+zle -N fman fman
+bindkey "^k" fman
 
 export RIPGREP_CONFIG_PATH="/home/user/.config/ripgrep/ripgrep.conf"
 
