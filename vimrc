@@ -179,6 +179,7 @@ if has('gui_running')
     set t_Co=256
 endif
 let g:lightline = {
+            \ 'colorscheme': 'wombat',
             \ 'active': {
             \   'left': [['mode', 'paste'], ['filename', 'modified']],
             \   'right': [['lineinfo'], ['percent'], ['readonly', 'linter_warnings', 'linter_errors', 'linter_ok']]
@@ -223,6 +224,9 @@ augroup lightline#ale
     autocmd User ALEFixPost call lightline#update()
 augroup END
 " /Lightline
+
+" VimWiki
+let g:vimwiki_list = [{'path': '~/.vimwiki', 'path_html': '~/Documents/VimWiki'}]
 
 " Load plugins and generate help tags for everything
 packloadall
