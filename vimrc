@@ -113,6 +113,7 @@ command WQ wq
 " super speedy splits
 noremap <leader>v :vsplit<cr>
 noremap <leader>b :split<cr>
+noremap <leader>x :bd<cr>
 " Navigate splits quickly
 noremap <LEFT> <C-w>h
 noremap <DOWN> <C-w>j
