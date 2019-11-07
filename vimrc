@@ -229,6 +229,12 @@ augroup END
 " VimWiki
 let g:vimwiki_list = [{'path': '~/.vimwiki', 'path_html': '~/Documents/VimWiki'}]
 
+" Netrw
+" When browsing a directory, display a tree (toggle dirs with <cr>)
+let g:netrw_liststyle=3
+" When browsing a directory, default to opening in a vertical split
+let g:netrw_browse_split=2
+
 " Load plugins and generate help tags for everything
 packloadall
 silent! helptags ALL
