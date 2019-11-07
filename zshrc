@@ -1,52 +1,55 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 # Path to your oh-my-zsh installation.
 export ZSH="/home/user/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
+export TERM=xterm-256color
+
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
 ZSH_THEME="agnoster"
 
-# Uncomment the following line to use case-sensitive completion.
+ZSH_AUTOSUGGEST_USE_ASYNC="true"
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=80
+
+# Case-sensitive completion.
 CASE_SENSITIVE="true"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
 DISABLE_AUTO_UPDATE="true"
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-#COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
+# History options
 HIST_STAMPS="dd.mm.yyyy"
 HIST_FIND_NO_DUPS="true"
 HIST_IGNORE_ALL_DUPS="true"
 HIST_SAVE_NO_DUPS="true"
 
-# Which plugins would you like to load?
+source $ZSH/oh-my-zsh.sh
+
+export PATH="$PATH:/home/user/.local/bin"
+
+# Ripgrep
+export RIPGREP_CONFIG_PATH="/home/user/.config/ripgrep/ripgrep.conf"
+
+# fzf
+export FZF_DEFAULT_COMMAND="fdfind --type file --follow --hidden --exclude .git --exclude .vim --color=always"
+export FZF_DEFAULT_OPTS="--ansi"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="--ansi --preview '(highlight -l -O ansi {} 2>/dev/null || cat {}) 2>/dev/null'"
+export FZF_ALT_C_OPTS="--preview 'ls --color -d {} 2>/dev/null && ls {} 2>/dev/null'"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+function fman() {
+   man -k . | fzf --prompt='Man> ' --preview "man \$(echo {} | awk '{print \$1}')" | awk '{print $1}' | xargs -r man
+}
+zle -N fman fman
+bindkey "^k" fman
+
+# Plugins
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 plugins=(
   fast-syntax-highlighting  # highlighting commands as I write them?
   zsh-autosuggestions       # suggest last matching command
   forgit                    # beautiful git w/fzf+diff-so-fancy
 )
 
+# Aliases and bindings
 function forgit() { # just in case I... forgit XD
     echo "forgit usage"
     echo "glo   : git log"
@@ -58,21 +61,9 @@ function forgit() { # just in case I... forgit XD
     echo "gclean: git clean"
 }
 
-ZSH_AUTOSUGGEST_USE_ASYNC="true"
-ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=80
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-export PATH="$PATH:/home/user/.local/bin"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# non-interactive in .zshenv
+# non-interactive loaded aliases in .zshenv
+bindkey "^p" push-line
+bindkey "^o" get-line
 alias dc='cd'
 alias grep='rg'
 alias x='xdg-open'
@@ -94,26 +85,9 @@ function clang() {
 function evince() {
     /usr/bin/evince $@ >/dev/null 2>&1 &
 }
-
-export TERM=xterm-256color
-
-export FZF_DEFAULT_COMMAND="fdfind --type file --follow --hidden --exclude .git --exclude .vim --color=always"
-export FZF_DEFAULT_OPTS="--ansi"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_CTRL_T_OPTS="--ansi --preview '(highlight -l -O ansi {} 2>/dev/null || cat {}) 2>/dev/null'"
-export FZF_ALT_C_OPTS="--preview 'ls --color -d {} 2>/dev/null && ls {} 2>/dev/null'"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-function fman() {
-   man -k . | fzf --prompt='Man> ' --preview "man \$(echo {} | awk '{print \$1}')" | awk '{print $1}' | xargs -r man
-}
-zle -N fman fman
-bindkey "^k" fman
-
-export RIPGREP_CONFIG_PATH="/home/user/.config/ripgrep/ripgrep.conf"
-
-# snap applications
 alias spotify="snap run spotify -force-device-scale-factor=1.75 >/dev/null 2>&1 &|"
 
+# Prompt for updates
 if [ -f ~/.last-update-run ]
 then if [ $(date -Idate -r ~/.last-update-run) != $(date -Idate) ] # if we haven't asked today
     then touch ~/.last-update-run
@@ -123,9 +97,6 @@ then if [ $(date -Idate -r ~/.last-update-run) != $(date -Idate) ] # if we haven
         fi
     fi
 fi
-
-bindkey "^p" push-line
-bindkey "^o" get-line
 
 autoload -Uz compinit
 compinit
