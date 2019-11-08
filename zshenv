@@ -1,4 +1,5 @@
 skip_global_compinit=1
+export PATH="$PATH:/home/user/.cargo/bin"
 
 export EDITOR="vim"
 
