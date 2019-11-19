@@ -1,6 +1,6 @@
 " vimrc
-"
-" general vim behavior and mappings
+" General vim behavior and mappings
+"{{{
 " push more characters through to the terminal per cycle
 set ttyfast
 " auto-update if changes are detected
@@ -25,9 +25,13 @@ set backup
 set backupdir=~/.vim/backup
 set noswapfile
 set backupskip=/tmp/*
+" U is a reasonable inverse of u
 nnoremap U <C-R>
+" make Y behave like other linewise operations
 nnoremap Y y$
+" editing important files w/o running vim as root
 cnoremap w!! w !sudo tee % > /dev/null
+" I never use Ex mode, so re-run macros instead
 nnoremap Q @@
 " behavior for line numbers and current line
 set rnu
@@ -48,7 +52,9 @@ command Wq wq
 command WQ wq
 " quick-jump to edit vimrc
 noremap <leader>rc :e $MYVIMRC<cr>
-" code-specific configs
+"}}}
+" Formatting and code-specific configs
+"{{{
 " + to write out buffers and run make
 nnoremap + :wa<bar>:make<bar><cr>
 " Indentation and other settings for common languages/formats
@@ -62,6 +68,7 @@ set foldmethod=indent
 " don't highlight long lines
 set synmaxcol=256
 " Folding
+"{{{
 " space bar toggles fold open/closed
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<cr>
 vnoremap <Space> zf
@@ -86,20 +93,25 @@ function Detectfold()
       setlocal nofoldenable
     endif
 endfunction
-au VimEnter * :call Detectfold()
+" toggle folding
+noremap <leader>ff :set foldenable!<cr>
+"}}}
 if has("autocmd")
-    filetype plugin indent on
+    autocmd VimEnter * :call Detectfold()
     autocmd FileType py,python,hs setlocal shiftwidth=4 tabstop=4 colorcolumn=80
     autocmd FileType c,h,java,cpp,hpp,rust,sh,css,js,go setlocal shiftwidth=3 tabstop=3 colorcolumn=80
     autocmd FileType rust nnoremap <buffer> + :wa<bar>:!cargo build<cr>
     autocmd FileType html,xml,markdown,md,txt,text setlocal shiftwidth=2 tabstop=2 colorcolumn=80
     autocmd FileType markdown,md,txt,text setlocal textwidth=80 nofoldenable
     autocmd FileType gitcommit setlocal shiftwidth=2 tabstop=2 colorcolumn=73 nofoldenable
-    autocmd FileType vim setlocal shiftwidth=4 tabstop=4
+    autocmd FileType vim,vimwiki setlocal foldmethod=marker
+    autocmd FileType vim setlocal shiftwidth=4 tabstop=4 foldmarker=\"{{{,\"}}}
+    autocmd FileType zsh setlocal nofoldenable
 endif
-" toggle folding
-noremap <leader>ff :set foldenable!<cr>
+filetype plugin indent on
+"}}}
 " Splits
+"{{{
 " super speedy splits
 noremap <leader>v :vsplit<cr>
 noremap <leader>b :split<cr>
@@ -114,7 +126,9 @@ set splitright
 set splitbelow
 " resize splits automatically
 au VimResized * :wincmd =
+"}}}
 " Buffers and fzf
+"{{{
 set rtp+=~/.fzf
 nmap ; :Buffers<cr>
 nmap <leader>e :Files<cr>
@@ -123,9 +137,12 @@ nmap <leader>t :Tags<cr>
 " move between open buffers
 map <PageDown> :bnext<cr>
 map <PageUp> :bprev<cr>
-" When browsing a directory, display a tree (toggle dirs with <cr>)
+"}}}
+" Plugins and external programs
+"{{{
+" when browsing a directory, display a tree (toggle dirs with <cr>)
 let g:netrw_liststyle=3
-" When browsing a directory, default to opening in a vertical split
+" when browsing a directory, default to opening in a vertical split
 let g:netrw_browse_split=2
 " copying and pasting
 noremap <leader>p :setlocal paste!<cr>
@@ -136,6 +153,7 @@ noremap <leader>cp !pbcopy; pbpaste<cr>
 " toggle numbering for pointer selection
 noremap <leader>n :set number!<cr>:set relativenumber!<cr>
 " Spelling and completion
+"{{{
 " toggle spellcheck
 noremap <leader>ss :setlocal spell!<cr>
 " somewhat saner spell shortcuts
@@ -148,11 +166,15 @@ set wildmenu
 set wildignorecase
 set complete+=kspell
 set infercase
+"}}}
 " ALE
+"{{{
 let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
 nmap <leader>l :ALEToggle<cr>
+"}}}
 " Lightline
+"{{{
 set laststatus=2
 set noshowmode
 let g:lightline = {
@@ -199,9 +221,9 @@ augroup lightline#ale
     autocmd User ALELintPost call lightline#update()
     autocmd User ALEFixPost call lightline#update()
 augroup END
-" /Lightline
-
+"}}}
 " Vimdiff
+"{{{
 if has("patch-8.1.0360")
     set diffopt+=internal,algorithm:patience
 endif
@@ -214,14 +236,19 @@ noremap <leader>3 :diffget REMOTE; diffupdate<cr>
 " :diffget REMTOE == accept remote branch's changes
 " :wqa to accept and quit
 " :cq to reject and quit
+"}}}
 
 " Colorizer plugin
+"{{{
 let g:colorizer_fgcontrast=1
 noremap <leader>ct :ColorToggle<cr>
+"}}}
 
 " VimWiki
+"{{{
 let g:vimwiki_list = [{'path': '~/.vimwiki', 'path_html': '~/Documents/VimWiki'}]
-
+"}}}
+"}}}
 " Load plugins and generate help tags for everything
 packloadall
 silent! helptags ALL
