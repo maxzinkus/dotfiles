@@ -53,7 +53,9 @@ command WQ wq
 " quick-jump to edit vimrc
 noremap <leader>rc :e $MYVIMRC<cr>
 "}}}
-" Formatting and code-specific configs
+" Formatting, folding, and code-specific configs
+"{{{
+" Settings
 "{{{
 " + to write out buffers and run make
 nnoremap + :wa<bar>:make<bar><cr>
@@ -67,6 +69,7 @@ set breakindent
 set foldmethod=indent
 " don't highlight long lines
 set synmaxcol=256
+"}}}
 " Folding
 "{{{
 " space bar toggles fold open/closed
@@ -96,6 +99,8 @@ endfunction
 " toggle folding
 noremap <leader>ff :set foldenable!<cr>
 "}}}
+" Autocmd
+"{{{
 if has("autocmd")
     autocmd VimEnter * :call Detectfold()
     autocmd FileType py,python,hs setlocal shiftwidth=4 tabstop=4 colorcolumn=80
@@ -104,11 +109,11 @@ if has("autocmd")
     autocmd FileType html,xml,markdown,md,txt,text setlocal shiftwidth=2 tabstop=2 colorcolumn=80
     autocmd FileType markdown,md,txt,text setlocal textwidth=80 nofoldenable
     autocmd FileType gitcommit setlocal shiftwidth=2 tabstop=2 colorcolumn=73 nofoldenable
-    autocmd FileType vim,vimwiki setlocal foldmethod=marker
-    autocmd FileType vim setlocal shiftwidth=4 tabstop=4 foldmarker=\"{{{,\"}}}
+    autocmd FileType vim setlocal shiftwidth=4 tabstop=4 foldmethod=marker foldmarker=\"{{{,\"}}}
     autocmd FileType zsh setlocal nofoldenable
 endif
 filetype plugin indent on
+"}}}
 "}}}
 " Splits
 "{{{
