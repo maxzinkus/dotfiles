@@ -18,9 +18,10 @@ equivalent of Debian*
 * ripgrep
 
 ## oh-my-zsh plugins
-* fast-syntax-highlighting
 * zsh-autosuggestions
+* fast-syntax-highlighting
 * forgit
+* colored-man-pages
 
 ## vim plugins
 * ale
@@ -28,7 +29,9 @@ equivalent of Debian*
 * fzf
 * lightline
 * polyglot
+* VimWiki
 
 ## other
 * diff-so-fancy
 * fzf
+* exa
