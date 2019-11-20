@@ -1,33 +1,33 @@
 [core]
-	editor = vim
-	pager = diff-so-fancy | less --tabs=4 -RFX
+    editor = vim
+    pager = diff-so-fancy | less --tabs=4 -RFX
 [merge]
-	tool = vimdiff
-	conflictstyle = diff3
+    tool = vimdiff
+    conflictstyle = diff3
 [mergetool]
-	prompt = false
+    prompt = false
 [status]
     show-untracked-files = all
 [color]
-	ui = true
+    ui = true
 [color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
+    oldNormal = red bold
+    oldHighlight = red bold 52
+    newNormal = green bold
+    newHighlight = green bold 22
 [color "diff"]
-	meta = yellow
-	frag = magenta bold
-	commit = yellow bold
-	old = red bold
-	new = green bold
-	whitespace = red reverse
+    meta = yellow
+    frag = magenta bold
+    commit = yellow bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
 [user]
-	name = Max
-	email = 5474655+maxzinkus@users.noreply.github.com
+    name = Max
+    email = 5474655+maxzinkus@users.noreply.github.com
 [init]
-	templatedir = ~/.config/git_template
+    templatedir = ~/.config/git_template
 [alias]
-	ctags = !.git/hooks/ctags
+    ctags = !.git/hooks/ctags
 [rerere]
-   enabled = true
+    enabled = true

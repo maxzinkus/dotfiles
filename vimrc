@@ -109,6 +109,7 @@ if has("autocmd")
     autocmd FileType html,xml,markdown,md,txt,text setlocal shiftwidth=2 tabstop=2 colorcolumn=80
     autocmd FileType markdown,md,txt,text setlocal textwidth=80 nofoldenable
     autocmd FileType gitcommit setlocal shiftwidth=2 tabstop=2 colorcolumn=73 nofoldenable
+    autocmd FileType gitconfig setlocal shiftwidth=4 tabstop=4 colorcolumn=80
     autocmd FileType vim setlocal shiftwidth=4 tabstop=4 foldmethod=marker foldmarker=\"{{{,\"}}}
     autocmd FileType zsh setlocal nofoldenable
 endif
