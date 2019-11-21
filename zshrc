@@ -102,8 +102,9 @@ if [ -f ~/.last-update-run ]
 then if [ $(date -Idate -r ~/.last-update-run) != $(date -Idate) ] # if we haven't asked today
     then touch ~/.last-update-run
         read -q "REPLY?Would you like to update? [y/N] "
+        echo ""
         if [ $REPLY = "y" ]
-        then echo "" ; ~/.local/bin/update.zsh
+        then ~/.local/bin/update.zsh
         fi
     fi
 fi
@@ -112,8 +113,9 @@ fi
 if [ -f ~/.last-backup-run ]
   then if [ $(date -r ~/.last-backup-run +"%W") != $(date +"%W") ] # if we haven't asked this week
     then read -q "REPLY?Would you like to back up to remote storage? [y/N] "
+    echo ""
     if [ $REPLY = "y" ]
-      then echo ""; touch ~/.last-backup-run ; rsync -avz --exclude="lost+found" /mnt/sda1 tower:~/BACKUP_LAPTOP
+      then touch ~/.last-backup-run ; rsync -avz --exclude="lost+found" /mnt/sda1 tower:~/BACKUP_LAPTOP
     fi
   fi
 fi
