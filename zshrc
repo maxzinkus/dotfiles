@@ -108,6 +108,16 @@ then if [ $(date -Idate -r ~/.last-update-run) != $(date -Idate) ] # if we haven
     fi
 fi
 
+# Prompt for backups
+if [ -f ~/.last-backup-run ]
+  then if [ $(date -r ~/.last-backup-run +"%W") != $(date +"%W") ] # if we haven't asked this week
+    then read -q "REPLY?Would you like to back up to remote storage? [y/N] "
+    if [ $REPLY = "y" ]
+      then echo ""; touch ~/.last-backup-run ; rsync -avz --exclude="lost+found" /mnt/sda1 tower:~/BACKUP_LAPTOP
+    fi
+  fi
+fi
+
 autoload -Uz compinit
 compinit
 # Completion for kitty
