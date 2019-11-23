@@ -100,7 +100,7 @@ alias spotify="snap run spotify -force-device-scale-factor=1.75 >/dev/null 2>&1 
 # Prompt for updates
 if [ -f ~/.last-update-run ]
 then if [ $(date -Idate -r ~/.last-update-run) != $(date -Idate) ] # if we haven't asked today
-    then touch ~/.last-update-run
+    then touch ~/.last-update-run # don't ask again today if declined
         read -q "REPLY?Would you like to update? [y/N] "
         echo ""
         if [ $REPLY = "y" ]
@@ -111,11 +111,15 @@ fi
 
 # Prompt for backups
 if [ -f ~/.last-backup-run ]
-  then if [ $(date -r ~/.last-backup-run +"%W") != $(date +"%W") ] # if we haven't asked this week
+  then if [ $(date -r ~/.last-backup-run +"%W") != $(date +"%W") ] # if we haven't backed up this week
     then read -q "REPLY?Would you like to back up to remote storage? [y/N] "
     echo ""
     if [ $REPLY = "y" ]
-      then touch ~/.last-backup-run ; rsync -avz --exclude="lost+found" /mnt/sda1 tower:~/BACKUP_LAPTOP
+      then if ~/.local/bin/backup.zsh
+        then echo "Backup successful"
+        touch ~/.last-backup-run # only touch if we actually back up
+      else echo "Backup failed"
+      fi
     fi
   fi
 fi
