@@ -53,7 +53,7 @@ command WQ wq
 " quick-jump to edit vimrc
 noremap <leader>rc :e $MYVIMRC<cr>
 "}}}
-" Formatting, folding, and code-specific configs
+" Autocmd, formatting, folding, and code-specific configs
 "{{{
 " Settings
 "{{{
@@ -112,6 +112,7 @@ if has("autocmd")
     autocmd FileType gitconfig setlocal shiftwidth=4 tabstop=4 colorcolumn=80
     autocmd FileType vim setlocal shiftwidth=4 tabstop=4 foldmethod=marker foldmarker=\"{{{,\"}}}
     autocmd FileType zsh setlocal nofoldenable
+    autocmd FileType vimwiki setlocal modeline
 endif
 filetype plugin indent on
 "}}}
