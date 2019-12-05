@@ -15,10 +15,6 @@ sudo -K
 # Update oh-my-zsh (and its built-in themes and plugins)
 upgrade_oh_my_zsh
 
-# Update fzf
-echo "\e[34mUpdating fzf\e[0m"
-pushd ~/.fzf ; git pull ; ./install --key-bindings --no-completion --no-bash --no-fish --no-update-rc ; popd
-
 # Update vim plugins (using git submodules)
 echo -e "\e[34mUpdating vim plugins\e[0m"
 vim-plug-update

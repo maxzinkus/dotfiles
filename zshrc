@@ -31,7 +31,6 @@ export RIPGREP_CONFIG_PATH="/home/user/.config/ripgrep/ripgrep.conf"
 # Plugins
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh # otherwise forgit complains
 plugins=(
   zsh-autosuggestions       # suggest last matching command, fish-style
   fast-syntax-highlighting  # highlighting commands as I write them?
@@ -43,14 +42,15 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # fzf
+source /usr/share/doc/fzf/examples/key-bindings.zsh
 export FZF_DEFAULT_COMMAND="fdfind --type file --follow --hidden --exclude .git --exclude .vim --color=always"
 export FZF_DEFAULT_OPTS="--ansi"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="--ansi --preview '(highlight -l -O ansi {} 2>/dev/null || cat {}) 2>/dev/null'"
 export FZF_ALT_C_OPTS="--preview 'ls --color -d {} 2>/dev/null && ls {} 2>/dev/null'"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh # sourced again because it doesn't work when sourced before the plugins?
 
 # Aliases and bindings
+# non-interactive loaded aliases in .zshenv
 function forgit() { # just in case I... forgit XD
     echo "forgit usage"
     echo "glo   : git log"
@@ -62,7 +62,6 @@ function forgit() { # just in case I... forgit XD
     echo "gclean: git clean"
 }
 
-# non-interactive loaded aliases in .zshenv
 function fman() {
    page=$(man -k . | fzf --prompt='Man> ' --preview "man \$(echo {} | awk '{print \$1}')" | awk '{print $1}')
    colored man "$page"
