@@ -113,6 +113,7 @@ if has("autocmd")
     autocmd FileType vim setlocal shiftwidth=4 tabstop=4 foldmethod=marker foldmarker=\"{{{,\"}}}
     autocmd FileType zsh setlocal nofoldenable
     autocmd FileType vimwiki setlocal modeline
+    autocmd FileType tex,plaintex setlocal colorcolumn=80 textwidth=80 foldmethod=marker foldmarker=%{{{,%}}}
 endif
 filetype plugin indent on
 "}}}
@@ -254,6 +255,8 @@ noremap <leader>ct :ColorToggle<cr>
 " VimWiki
 "{{{
 let g:vimwiki_list = [{'path': '~/.vimwiki', 'path_html': '~/Documents/VimWiki'}]
+noremap <leader>w<leader>x :VimwikiDeleteLink<cr>
+noremap <leader>w<leader>r :VimwikiRenameLink<cr>
 "}}}
 "}}}
 " Load plugins and generate help tags for everything
