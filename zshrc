@@ -63,8 +63,10 @@ function forgit() { # just in case I... forgit XD
 }
 
 function fman() {
-   page=$(man -k . | fzf --prompt='Man> ' --preview "man \$(echo {} | awk '{print \$1}')" | awk '{print $1}')
-   colored man "$page"
+  page=$(man -k . | fzf --prompt='Man> ' --preview "man \$(echo {} | awk '{print \$1}')" | awk '{print $1}')
+  if [ -n "$page" -a "$page" != "\n" ]
+  then colored man "$page"
+  fi
 }
 zle -N fman fman
 bindkey "^k" fman
@@ -95,6 +97,7 @@ function evince() {
     /usr/bin/evince $@ >/dev/null 2>&1 &
 }
 alias spotify="snap run spotify -force-device-scale-factor=1.75 >/dev/null 2>&1 &|"
+alias aq="Artix_Games_Launcher-x86_64.AppImage >/dev/null 2>&1 &|"
 
 # Prompt for updates
 if [ -f ~/.last-update-run ]
