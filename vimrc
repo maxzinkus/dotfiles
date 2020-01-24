@@ -148,11 +148,16 @@ map <PageUp> :bprev<cr>
 "}}}
 " Plugins and external programs
 "{{{
+" netrw
+"{{{
 " when browsing a directory, display a tree (toggle dirs with <cr>)
 let g:netrw_liststyle=3
 " when browsing a directory, default to opening in a vertical split
 let g:netrw_browse_split=2
 " copying and pasting
+"}}}
+" copy/paste
+"{{{
 noremap <leader>p :setlocal paste!<cr>
 " copy visual highlight to clipboard ("+ and "* don't seem to do it)
 " pbpaste because pbcopy doesn't output anything, so w/o it the highlight is
@@ -160,6 +165,7 @@ noremap <leader>p :setlocal paste!<cr>
 noremap <leader>cp !pbcopy; pbpaste<cr>
 " toggle numbering for pointer selection
 noremap <leader>n :set number!<cr>:set relativenumber!<cr>
+"}}}
 " Spelling and completion
 "{{{
 " toggle spellcheck
@@ -245,13 +251,11 @@ noremap <leader>3 :diffget REMOTE; diffupdate<cr>
 " :wqa to accept and quit
 " :cq to reject and quit
 "}}}
-
 " Colorizer plugin
 "{{{
 let g:colorizer_fgcontrast=1
 noremap <leader>ct :ColorToggle<cr>
 "}}}
-
 " VimWiki
 "{{{
 let g:vimwiki_list = [{'path': '~/.vimwiki', 'path_html': '~/Documents/VimWiki'}]
