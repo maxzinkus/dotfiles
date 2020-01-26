@@ -86,8 +86,9 @@ alias cp='cp -i'
 alias rm='rm -i'
 alias sctl='systemctl'
 alias fd='fdfind'
-unalias la
 alias ls='exa'
+unalias la
+alias la='exa -a'
 alias ll='exa -lh --git'
 alias lsc='exa -1 | wc -l'
 alias lsca='exa -1 --all | wc -l'
