@@ -17,11 +17,12 @@ equivalent of Debian*
 * fdfind
 * ripgrep
 
-## oh-my-zsh plugins
+## oh-my-zsh plugins/custom themes
 * zsh-autosuggestions
 * fast-syntax-highlighting
 * forgit
 * colored-man-pages
+* gruvbox
 
 ## vim plugins
 * ale

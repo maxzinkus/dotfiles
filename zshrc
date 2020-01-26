@@ -2,7 +2,8 @@
 export ZSH="/home/user/.oh-my-zsh"
 
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
+ZSH_THEME="gruvbox"
+SOLARIZED_THEME="dark"
 
 export TERM=xterm-256color
 
@@ -85,6 +86,7 @@ alias cp='cp -i'
 alias rm='rm -i'
 alias sctl='systemctl'
 alias fd='fdfind'
+unalias la
 alias ls='exa'
 alias ll='exa -lh --git'
 alias lsc='exa -1 | wc -l'
