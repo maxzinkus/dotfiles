@@ -6,8 +6,9 @@ set ttyfast
 " auto-update if changes are detected
 set autoread
 " make colors vibrant
-set background=dark
 source ~/.vim/happy_hacking.vim
+set background=dark
+colorscheme gruvbox
 " disable mouse
 set mouse=""
 " disable intro text
