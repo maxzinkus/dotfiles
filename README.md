@@ -31,7 +31,6 @@ equivalent of Debian*
 * lightline
 * polyglot
 * VimWiki
-* gruvbox
 
 ## other
 * diff-so-fancy
