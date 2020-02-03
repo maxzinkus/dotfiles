@@ -31,11 +31,18 @@ if [ -f $dsftmp ]
 then rm $dsftmp
 fi
 
-# Update custom oh-my-zsh plugins (sadly doesn't play nice with submodules)
+# Update custom oh-my-zsh themes/plugins (sadly doesn't play nice with submodules)
 pushd ~/.oh-my-zsh/custom/plugins
 for plugin in $(ls)
 do if [ "$plugin" != "example" ]
     then pushd "$plugin" ; echo -e "\e[34mUpdating $plugin\e[0m" ; git pull ; popd
+    fi
+done
+popd
+pushd ~/.oh-my-zsh/custom/themes
+for theme in $(ls)
+do if [ "$theme" != "example.zsh-theme" ]
+    then pushd "$theme" ; echo -e "\e[34mUpdating $theme\e[0m" ; git pull ; popd
     fi
 done
 popd
