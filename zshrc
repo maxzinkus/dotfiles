@@ -1,9 +1,42 @@
+# Prompt for updates
+if [ -f ~/.last-update-run ]
+then if [ $(date -Idate -r ~/.last-update-run) != $(date -Idate) ] # if we haven't asked today
+    then touch ~/.last-update-run # don't ask again today if declined
+        read -q "REPLY?Would you like to update? [y/N] "
+        echo ""
+        if [ $REPLY = "y" ]
+        then ~/.local/bin/update.zsh
+        fi
+    fi
+fi
+
+# Prompt for backups
+if [ -f ~/.last-backup-run ]
+  then if [ $(date -r ~/.last-backup-run +"%W") != $(date +"%W") ] # if we haven't backed up this week
+    then read -q "REPLY?Would you like to back up to remote storage? [y/N] "
+    echo ""
+    if [ $REPLY = "y" ]
+      then if ~/.local/bin/backup.zsh
+        then echo "Backup successful"
+        touch ~/.last-backup-run # only touch if we actually back up
+      else echo "Backup failed"
+      fi
+    fi
+  fi
+fi
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block, everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Path to your oh-my-zsh installation.
 export ZSH="/home/user/.oh-my-zsh"
 
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="gruvbox"
-SOLARIZED_THEME="dark"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 export TERM=xterm-256color
 
@@ -102,34 +135,10 @@ function evince() {
 alias spotify="snap run spotify -force-device-scale-factor=1.75 >/dev/null 2>&1 &|"
 alias aq="Artix_Games_Launcher-x86_64.AppImage >/dev/null 2>&1 &|"
 
-# Prompt for updates
-if [ -f ~/.last-update-run ]
-then if [ $(date -Idate -r ~/.last-update-run) != $(date -Idate) ] # if we haven't asked today
-    then touch ~/.last-update-run # don't ask again today if declined
-        read -q "REPLY?Would you like to update? [y/N] "
-        echo ""
-        if [ $REPLY = "y" ]
-        then ~/.local/bin/update.zsh
-        fi
-    fi
-fi
-
-# Prompt for backups
-if [ -f ~/.last-backup-run ]
-  then if [ $(date -r ~/.last-backup-run +"%W") != $(date +"%W") ] # if we haven't backed up this week
-    then read -q "REPLY?Would you like to back up to remote storage? [y/N] "
-    echo ""
-    if [ $REPLY = "y" ]
-      then if ~/.local/bin/backup.zsh
-        then echo "Backup successful"
-        touch ~/.last-backup-run # only touch if we actually back up
-      else echo "Backup failed"
-      fi
-    fi
-  fi
-fi
-
 autoload -Uz compinit
 compinit
 # Completion for kitty
 kitty + complete setup zsh | source /dev/stdin
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

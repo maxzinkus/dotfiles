@@ -22,7 +22,7 @@ equivalent of Debian*
 * fast-syntax-highlighting
 * forgit
 * colored-man-pages
-* gruvbox
+* powerlevel10k
 
 ## vim plugins
 * ale
