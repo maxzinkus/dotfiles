@@ -104,12 +104,14 @@ function fman() {
 }
 zle -N fman fman
 bindkey "^k" fman
+bindkey "^[" backward-word
+bindkey "^]" forward-word
+export KEYTIMEOUT=20
 bindkey "^p" push-line
 bindkey "^o" get-line
 alias dc='cd'
 alias grep='rg'
 alias x='xdg-open'
-alias v='fzf --preview "(highlight -l -O ansi {} 2>/dev/null || cat {}) 2>/dev/null" --bind "enter:execute(vim {})+accept"'
 alias ifconfig='ip a'
 alias gs='git status'
 alias gc='git commit'
