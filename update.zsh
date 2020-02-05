@@ -3,7 +3,9 @@
 # One script to bring them all and in the darkness update them
 
 # Don't update if we can't get DNS and ICMP
-ping -c1 -q example.com >/dev/null 2>&1 || (echo "Can't update, no internet connection." 1>&2 && kill $$)
+if ! ping -c1 -q example.com >/dev/null 2>&1
+then echo "Can't update, no internet connection." 1>&2 ; exit 1
+fi
 
 # Update ubuntu packages and clean up
 echo -e "\e[34mapt update\e[0m"
