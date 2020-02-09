@@ -70,6 +70,7 @@ plugins=(
   fast-syntax-highlighting  # highlighting commands as I write them?
   forgit                    # beautiful git w/fzf+diff-so-fancy
   colored-man-pages         # everything is better with colors
+  fzf-tab                   # tab complete with fzf
 )
 
 # source oh-my-zsh AFTER the plugins are defined, silly
@@ -121,6 +122,7 @@ alias cp='cp -i'
 alias rm='rm -i'
 alias sctl='systemctl'
 alias fd='fdfind'
+alias find='echo "use fd"'
 alias ls='exa'
 unalias la
 alias la='exa -a'

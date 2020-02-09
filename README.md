@@ -23,6 +23,7 @@ equivalent of Debian*
 * forgit
 * colored-man-pages
 * powerlevel10k
+* fzf-tab
 
 ## vim plugins
 * ale
