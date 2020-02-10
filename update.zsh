@@ -49,4 +49,9 @@ do if [ "$theme" != "example.zsh-theme" ]
 done
 popd
 
+# Update language packages
+echo -e "\e[34mUpdating Rust\e[0m"
+rustup update
+cargo install-update -a
+
 touch ~/.last-update-run
