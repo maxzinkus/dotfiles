@@ -128,6 +128,7 @@ alias ll='exa -lh --git'
 alias lsc='exa -1 | wc -l'
 alias lsca='exa -1 --all | wc -l'
 alias exa='exa -F --color=always'
+alias weather='ansiweather'
 function clang() {
    /usr/bin/clang --config ~/.config/clang/clang.cfg $@
 }
