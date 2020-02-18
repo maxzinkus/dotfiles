@@ -129,6 +129,12 @@ alias lsc='exa -1 | wc -l'
 alias lsca='exa -1 --all | wc -l'
 alias exa='exa -F --color=always'
 alias weather='ansiweather'
+alias cd='cdls'
+function cdls() {
+  if \cd $@
+  then ls
+  fi
+}
 function clang() {
    /usr/bin/clang --config ~/.config/clang/clang.cfg $@
 }
