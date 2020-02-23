@@ -130,6 +130,7 @@ alias lsca='exa -1 --all | wc -l'
 alias exa='exa -F --color=always'
 alias weather='ansiweather'
 alias cd='cdls'
+alias py='python3'
 function cdls() {
   if \cd $@
   then ls
