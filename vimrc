@@ -54,7 +54,7 @@ noremap <leader>rc :e $MYVIMRC<cr>
 "}}}
 " Autocmd, formatting, folding, and code-specific configs
 "{{{
-" Settings
+" - Settings
 "{{{
 " + to write out buffers and run make
 nnoremap + :wa<bar>:make<bar><cr>
@@ -69,7 +69,7 @@ set foldmethod=indent
 " don't highlight long lines
 set synmaxcol=256
 "}}}
-" Folding
+" - Folding
 "{{{
 " space bar toggles fold open/closed
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<cr>
@@ -97,8 +97,11 @@ function Detectfold()
 endfunction
 " toggle folding
 noremap <leader>ff :set foldenable!<cr>
+" save/restore manual folds
+noremap <leader>fs :mkview<cr>
+noremap <leader>fl :loadview<cr>
 "}}}
-" Autocmd
+" - Autocmd
 "{{{
 if has("autocmd")
     autocmd VimEnter * :call Detectfold()
@@ -147,7 +150,7 @@ map <PageUp> :bprev<cr>
 "}}}
 " Plugins and external programs
 "{{{
-" netrw
+" - netrw
 "{{{
 " when browsing a directory, display a tree (toggle dirs with <cr>)
 let g:netrw_liststyle=3
@@ -155,7 +158,7 @@ let g:netrw_liststyle=3
 let g:netrw_browse_split=2
 " copying and pasting
 "}}}
-" copy/paste
+" - copy/paste
 "{{{
 noremap <leader>p :setlocal paste!<cr>
 " copy visual highlight to clipboard ("+ and "* don't seem to do it)
@@ -165,7 +168,7 @@ noremap <leader>cp !pbcopy; pbpaste<cr>
 " toggle numbering for pointer selection
 noremap <leader>n :set number!<cr>:set relativenumber!<cr>
 "}}}
-" Spelling and completion
+" - Spelling and completion
 "{{{
 " toggle spellcheck
 noremap <leader>ss :setlocal spell!<cr>
@@ -180,13 +183,13 @@ set wildignorecase
 set complete+=kspell
 set infercase
 "}}}
-" ALE
+" - ALE
 "{{{
 let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
 nmap <leader>l :ALEToggle<cr>
 "}}}
-" Lightline
+" - Lightline
 "{{{
 set laststatus=2
 set noshowmode
@@ -235,7 +238,7 @@ augroup lightline#ale
     autocmd User ALEFixPost call lightline#update()
 augroup END
 "}}}
-" Vimdiff
+" - Vimdiff
 "{{{
 if has("patch-8.1.0360")
     set diffopt+=internal,algorithm:patience
@@ -250,19 +253,21 @@ noremap <leader>3 :diffget REMOTE; diffupdate<cr>
 " :wqa to accept and quit
 " :cq to reject and quit
 "}}}
-" Colorizer plugin
+" - Colorizer plugin
 "{{{
 let g:colorizer_fgcontrast=1
 noremap <leader>ct :ColorToggle<cr>
 "}}}
-" VimWiki
+" - VimWiki
 "{{{
 let g:vimwiki_list = [{'path': '~/.vimwiki', 'path_html': '~/Documents/VimWiki'}]
 noremap <leader>w<leader>x :VimwikiDeleteLink<cr>
 noremap <leader>w<leader>r :VimwikiRenameLink<cr>
 "}}}
 "}}}
-" Load plugins and generate help tags for everything
+" Load plugins and generate help tags for everything - must be at end
+"{{{
 packloadall
 silent! helptags ALL
 set secure
+"}}}
