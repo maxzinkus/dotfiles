@@ -26,6 +26,8 @@ set noswapfile
 set backupskip=/tmp/*
 " U is a reasonable inverse of u
 nnoremap U <C-R>
+" decrement can't be tmux prefix
+noremap <C-d> <C-x>
 " make Y behave like other linewise operations
 nnoremap Y y$
 " editing important files w/o running vim as root
