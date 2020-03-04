@@ -31,6 +31,7 @@ equivalent of Debian*
 * fzf
 * lightline
 * bufferline ([integration](https://github.com/itchyny/lightline.vim/issues/36))
+* bufkill
 * polyglot
 * VimWiki
 

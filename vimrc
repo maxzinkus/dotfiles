@@ -127,7 +127,7 @@ filetype plugin indent on
 " super speedy splits
 noremap <leader>v :vsplit<cr>
 noremap <leader>b :split<cr>
-noremap <leader>x :bd<cr>
+noremap <leader>x :BD<cr>
 " Navigate splits quickly
 noremap <LEFT> <C-w>h
 noremap <DOWN> <C-w>j
