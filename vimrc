@@ -191,6 +191,10 @@ let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
 nmap <leader>l :ALEToggle<cr>
 "}}}
+" - Bufferline
+"{{{
+let g:bufferline_echo = 0
+"}}}
 " - Lightline
 "{{{
 set laststatus=2
@@ -198,8 +202,8 @@ set noshowmode
 let g:lightline = {
             \ 'colorscheme': 'wombat',
             \ 'active': {
-            \   'left': [['mode', 'paste'], ['filename', 'modified']],
-            \   'right': [['lineinfo'], ['percent'], ['readonly', 'linter_warnings', 'linter_errors', 'linter_ok']]
+            \   'left': [['mode', 'paste'], ['filename', 'modified', 'readonly'], ['bufferline']],
+            \   'right': [['lineinfo'], ['percent'], ['linter_warnings', 'linter_errors', 'linter_ok']]
             \ },
             \ 'component_expand': {
             \   'linter_warnings': 'LightlineLinterWarnings',
@@ -211,7 +215,29 @@ let g:lightline = {
             \   'linter_warnings': 'warning',
             \   'linter_errors': 'error'
             \ },
+            \ 'component_function': {
+            \   'bufferline': 'MyBufferline'
+            \ },
             \}
+function! MyBufferline()
+    call bufferline#refresh_status()
+    let b = g:bufferline_status_info.before
+    let c = g:bufferline_status_info.current
+    let a = g:bufferline_status_info.after
+    let alen = strlen(a)
+    let blen = strlen(b)
+    let clen = strlen(c)
+    let w = winwidth(0) * 4 / 10
+    if w < alen+blen+clen
+        let whalf = (w - strlen(c)) / 2
+        let aa = alen > whalf && blen > whalf ? a[:whalf] : alen + blen < w - clen || alen < whalf ? a : a[:(w - clen - blen)]
+        let bb = alen > whalf && blen > whalf ? b[-(whalf):] : alen + blen < w - clen || blen < whalf ? b : b[-(w - clen - alen):]
+        return (strlen(bb) < strlen(b) ? '...' : '') . bb . c . aa . (strlen(aa) < strlen(a) ? '...' : '')
+    else
+        return b . c . a
+    endif
+endfunction
+
 function! LightlineLinterWarnings() abort
     let l:counts = ale#statusline#Count(bufnr(''))
     let l:all_errors = l:counts.error + l:counts.style_error

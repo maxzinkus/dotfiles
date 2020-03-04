@@ -30,6 +30,7 @@ equivalent of Debian*
 * colorizer
 * fzf
 * lightline
+* bufferline ([integration](https://github.com/itchyny/lightline.vim/issues/36))
 * polyglot
 * VimWiki
 
