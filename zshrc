@@ -57,6 +57,9 @@ HIST_FIND_NO_DUPS="true"
 HIST_IGNORE_ALL_DUPS="true"
 HIST_SAVE_NO_DUPS="true"
 
+# systemd
+export SYSTEMD_EDITOR=vim
+
 # Ripgrep
 export RIPGREP_CONFIG_PATH="/home/user/.config/ripgrep/ripgrep.conf"
 
