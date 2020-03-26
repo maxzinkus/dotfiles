@@ -17,14 +17,14 @@ fi
 if [ -f ~/.last-backup-run ]
   # if we haven't backed up this week
   then if [ $(date -r ~/.last-backup-run +"%W") != $(date +"%W") ]
-    then read -q "REPLY?Would you like to back up to remote storage? [y/N] "
+    # only ask once per day
+    then touch ~/.last-backup-run
+    read -q "REPLY?Would you like to back up to remote storage? [y/N] "
     echo ""
     if [ $REPLY = "y" ]
       then if ~/.local/bin/backup.zsh
         then echo "Backup successful"
-        # only touch if we actually back up
-        touch ~/.last-backup-run
-      else echo "Backup failed"
+        else echo "Backup failed"
       fi
     fi
   fi
