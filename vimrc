@@ -189,7 +189,9 @@ set infercase
 "{{{
 let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
-nmap <leader>l :ALEToggle<cr>
+nmap <leader>ll :ALEToggle<cr>
+nmap <leader>ln :ALENext<cr>
+nmap <leader>lp :ALEPrevious<cr>
 "}}}
 " - Bufferline
 "{{{
@@ -256,7 +258,7 @@ function! LightlineLinterOK() abort
     let l:counts = ale#statusline#Count(bufnr(''))
     let l:all_errors = l:counts.error + l:counts.style_error
     let l:all_non_errors = l:counts.total - l:all_errors
-    return l:counts.total == 0 ? '✓ ' : ''
+    return (g:ale_enabled && l:counts.total == 0) ? '✓ ' : ''
 endfunction
 
 augroup lightline#ale
