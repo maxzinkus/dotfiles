@@ -190,8 +190,8 @@ set infercase
 let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
 nmap <leader>ll :ALEToggle<cr>
-nmap <leader>ln :ALENext<cr>
-nmap <leader>lp :ALEPrevious<cr>
+nmap <C-n> :ALENext<cr>
+nmap <C-p> :ALEPrevious<cr>
 "}}}
 " - Bufferline
 "{{{
