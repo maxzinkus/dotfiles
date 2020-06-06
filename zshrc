@@ -129,7 +129,6 @@ alias cp='cp -i'
 alias rm='rm -i'
 alias sctl='systemctl'
 alias fd='fdfind'
-alias find='echo "use fd"'
 alias ls='exa'
 unalias la
 alias la='exa -a'
