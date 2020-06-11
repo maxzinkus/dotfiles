@@ -24,6 +24,8 @@ set backup
 set backupdir=~/.vim/backup
 set noswapfile
 set backupskip=/tmp/*
+" hidden tags file
+set tags+=.tags
 " U is a reasonable inverse of u
 nnoremap U <C-R>
 " decrement can't be tmux prefix
@@ -90,14 +92,6 @@ set foldtext=MyFoldText()
 highlight Folded ctermfg=darkgrey ctermbg=NONE
 " start with folding off
 setlocal nofoldenable
-" fold large files
-function Detectfold()
-    if line('$') > winheight(0)
-      setlocal foldenable
-    else
-      setlocal nofoldenable
-    endif
-endfunction
 " toggle folding
 noremap <leader>ff :set foldenable!<cr>
 " save/restore manual folds
@@ -107,7 +101,6 @@ noremap <leader>fl :loadview<cr>
 " - Autocmd
 "{{{
 if has("autocmd")
-    " autocmd VimEnter * :call Detectfold()
     autocmd FileType py,python,hs setlocal shiftwidth=4 tabstop=4 colorcolumn=80
     autocmd FileType c,h,java,cpp,hpp,rust,sh,css,js,go setlocal shiftwidth=3 tabstop=3 colorcolumn=80
     autocmd FileType rust nnoremap <buffer> + :wa<bar>:!cargo build<cr>
