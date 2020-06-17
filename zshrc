@@ -1,33 +1,33 @@
 # Prompt for updates
 if [ -f ~/.last-update-run ]
-# if we haven't asked today
+  # if we haven't asked today
 then if [ $(date -Idate -r ~/.last-update-run) != $(date -Idate) ]
-  # don't ask again today if declined
-  then touch ~/.last-update-run
-    read -q "REPLY?Would you like to update? [y/N] "
-    echo ""
-    if [ $REPLY = "y" ]
-      then ~/.local/bin/update.zsh
-    fi
+  # only ask once per day
+then touch ~/.last-update-run
+  read -q "REPLY?Would you like to update? [y/N] "
+  echo ""
+  if [ $REPLY = "y" ]
+  then ~/.local/bin/update.zsh
   fi
+fi
 else echo "~/.last-update-run file not found." >&2
 fi
 
 # Prompt for backups
 if [ -f ~/.last-backup-run ]
-  # if we haven't backed up this week
-  then if [ $(date -r ~/.last-backup-run +"%W") != $(date +"%W") ]
-    # only ask once per day
-    then touch ~/.last-backup-run
-    read -q "REPLY?Would you like to back up to remote storage? [y/N] "
-    echo ""
-    if [ $REPLY = "y" ]
-      then if ~/.local/bin/backup.zsh
-        then echo "Backup successful"
-        else echo "Backup failed"
-      fi
-    fi
+  # if we haven't asked today
+then if [ $(date -Idate -r ~/.last-backup-run) != $(date -Idate) ]
+  # only ask once per day
+then touch ~/.last-backup-run
+  read -q "REPLY?Would you like to back up to remote storage? [y/N] "
+  echo ""
+  if [ $REPLY = "y" ]
+  then if ~/.local/bin/backup.zsh
+  then echo "Backup successful"
+  else echo "Backup failed"
   fi
+  fi
+fi
 else echo "~/.last-backup-run file not found." >&2
 fi
 
