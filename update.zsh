@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/usr/bin/env zsh
 
 # One script to bring them all and in the darkness update them
 
@@ -9,7 +9,7 @@ fi
 
 # Update ubuntu packages and clean up
 echo -e "\e[34mapt update\e[0m"
-sudo apt update ; sudo apt full-upgrade ; sudo apt autoremove ; sudo apt autoclean
+sudo apt update ; sudo apt full-upgrade ; sudo apt autoremove --purge ; sudo apt autoclean
 
 # Drop privs in case any of the scripts below try something cheeky
 sudo -K
