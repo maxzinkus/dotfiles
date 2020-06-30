@@ -69,6 +69,12 @@ export SYSTEMD_EDITOR=vim
 # Ripgrep
 export RIPGREP_CONFIG_PATH="/home/user/.config/ripgrep/ripgrep.conf"
 
+# flatpak
+export XDG_DATA_DIRS="$XDG_DATA_DIRS:/home/user/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share"
+alias fp='flatpak'
+alias slack='fp run com.slack.Slack &|'
+alias zoom='fp run us.zoom.Zoom &|'
+
 # Plugins
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -150,8 +156,8 @@ function clang() {
 function evince() {
     /usr/bin/evince $@ >/dev/null 2>&1 &
 }
-alias spotify="snap run spotify -force-device-scale-factor=1.75 >/dev/null 2>&1 &|"
-alias aq="Artix_Games_Launcher-x86_64.AppImage >/dev/null 2>&1 &|"
+
+source ~/.opam.zsh
 
 autoload -Uz compinit
 compinit
