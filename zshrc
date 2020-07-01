@@ -72,8 +72,6 @@ export RIPGREP_CONFIG_PATH="/home/user/.config/ripgrep/ripgrep.conf"
 # flatpak
 export XDG_DATA_DIRS="$XDG_DATA_DIRS:/home/user/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share"
 alias fp='flatpak'
-alias slack='fp run com.slack.Slack &|'
-alias zoom='fp run us.zoom.Zoom &|'
 
 # Plugins
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*

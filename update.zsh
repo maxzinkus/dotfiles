@@ -2,8 +2,8 @@
 
 # One script to bring them all and in the darkness update them
 
-# Don't update if we can't get DNS and ICMP
-if ! ping -c1 -q example.com >/dev/null 2>&1
+# Don't update if we can't get ICMP, or RTT > 1s
+if ! ping -W 1 -c1 -q 1.1.1.1 >/dev/null 2>&1
 then echo "Can't update, no internet connection." 1>&2 ; exit 1
 fi
 
