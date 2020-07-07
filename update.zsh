@@ -10,9 +10,14 @@ fi
 # Update ubuntu packages and clean up
 echo -e "\e[34mapt update\e[0m"
 sudo apt update ; sudo apt full-upgrade ; sudo apt autoremove --purge ; sudo apt autoclean
+# Update snaps
+sudo snap refresh
 
 # Drop privs in case any of the scripts below try something cheeky
 sudo -K
+
+# flatpak apps
+flatpak update
 
 # Update oh-my-zsh (and its built-in themes and plugins)
 upgrade_oh_my_zsh
