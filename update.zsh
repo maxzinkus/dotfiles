@@ -17,7 +17,7 @@ sudo snap refresh
 sudo -K
 
 # flatpak apps
-flatpak update
+flatpak update -y
 
 # Update oh-my-zsh (and its built-in themes and plugins)
 upgrade_oh_my_zsh
