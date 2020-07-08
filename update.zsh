@@ -11,12 +11,14 @@ fi
 echo -e "\e[34mapt update\e[0m"
 sudo apt update ; sudo apt full-upgrade ; sudo apt autoremove --purge ; sudo apt autoclean
 # Update snaps
+echo -e "\e[34msnap refresh\e[0m"
 sudo snap refresh
 
 # Drop privs in case any of the scripts below try something cheeky
 sudo -K
 
 # flatpak apps
+echo -e "\e[34mflatpak update\e[0m"
 flatpak update -y
 
 # Update oh-my-zsh (and its built-in themes and plugins)
@@ -26,13 +28,15 @@ upgrade_oh_my_zsh
 echo -e "\e[34mUpdating vim plugins\e[0m"
 vim-plug-update
 
-# Check for diff-so-fancy updates by comparing hashes, and update if needed
+# Check for diff-so-fancy updates by comparing hashes
 echo -e "\e[34mChecking diff-so-fancy for updates\e[0m"
 local dsfurl="https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy"
 local dsftmp=$(mktemp)
 wget -q -O $dsftmp $dsfurl
 if [ $(sha256sum $dsftmp | awk '{ print $1 }') != $(sha256sum ~/.local/bin/diff-so-fancy | awk '{ print $1 }') ]
-then echo -e "\e[34mUpdating diff-so-fancy\e[0m" ; cp $dsftmp ~/.local/bin/diff-so-fancy ; chmod +x ~/.local/bin/diff-so-fancy
+then echo -e "\e[34mNew diff-so-fancy available\e[0m" ;
+     cp $dsftmp ~/.local/bin/diff-so-fancy.new ; chmod +x ~/.local/bin/diff-so-fancy.new ;
+     echo -e "\e[34mSaved to ~/.local/bin.diff-so-fancy.new\e[0m" ;
 fi
 if [ -f $dsftmp ]
 then rm $dsftmp
