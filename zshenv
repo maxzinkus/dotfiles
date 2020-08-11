@@ -38,6 +38,13 @@ function vim-plug-remove() {
     fi
 }
 
-function upgrade_oh_my_zsh () {
-    env ZSH=$ZSH sh $ZSH/tools/upgrade.sh
+function omz-update {
+    local ZSH="/home/user/.oh-my-zsh"
+    local ZSH_CACHE_DIR="$ZSH/cache"
+    env ZSH="$ZSH" sh "$ZSH/tools/upgrade.sh"
+    # Update last updated file
+    zmodload zsh/datetime
+    echo "LAST_EPOCH=$(( EPOCHSECONDS / 60 / 60 / 24 ))" >! "${ZSH_CACHE_DIR}/.zsh-update"
+    # Remove update lock if it exists
+    command rm -rf "$ZSH/log/update.lock"
 }

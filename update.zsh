@@ -22,7 +22,7 @@ echo -e "\e[34mflatpak update\e[0m"
 flatpak update -y
 
 # Update oh-my-zsh (and its built-in themes and plugins)
-omz update
+omz-update
 
 # Update vim plugins (using git submodules)
 echo -e "\e[34mUpdating vim plugins\e[0m"
