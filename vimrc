@@ -133,7 +133,7 @@ au VimResized * :wincmd =
 "}}}
 " Buffers and fzf
 "{{{
-source /usr/share/doc/fzf/examples/fzf.vim
+set rtp+=~/.fzf
 nmap ; :Buffers<cr>
 nmap <leader>e :Files<cr>
 nmap <leader>r :Marks<cr>
