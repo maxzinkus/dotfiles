@@ -53,8 +53,6 @@ command W w
 command Q q
 command Wq wq
 command WQ wq
-" quick-jump to edit vimrc
-noremap <leader>rc :e $MYVIMRC<cr>
 "}}}
 " Autocmd, formatting, folding, and code-specific configs
 "{{{
