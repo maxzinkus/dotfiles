@@ -88,12 +88,12 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # fzf
-source /usr/share/doc/fzf/examples/key-bindings.zsh
 export FZF_DEFAULT_COMMAND="fdfind --type file --follow --hidden --exclude .git --exclude .vim --color=always"
 export FZF_DEFAULT_OPTS="--ansi"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="--ansi --preview '(highlight -l -O ansi {} 2>/dev/null || cat {}) 2>/dev/null'"
 export FZF_ALT_C_OPTS="--preview 'ls --color -d {} 2>/dev/null && ls {} 2>/dev/null'"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Aliases and bindings
 # non-interactive loaded aliases in .zshenv
