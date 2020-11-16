@@ -4,7 +4,11 @@
 
 set -e
 PATH="/usr/local/bin:$PATH"
+if [ -f "tags" ]
+then TAGFILE="tags"
+else TAGFILE=".tags"
+fi
 trap 'rm -f "$$.tags"' EXIT
 git ls-files | \
   ctags --tag-relative -L - -f"$$.tags"
-mv "$$.tags" ".tags"
+mv "$$.tags" "$TAGFILE"
