@@ -1,6 +1,7 @@
 " vimrc
 " General vim behavior and mappings
 "{{{
+set nocompatible
 " push more characters through to the terminal per cycle
 set ttyfast
 " auto-update if changes are detected
@@ -32,8 +33,6 @@ nnoremap U <C-R>
 noremap <C-d> <C-x>
 " make Y behave like other linewise operations
 nnoremap Y y$
-" editing important files w/o running vim as root
-cnoremap w!! w !sudo tee % > /dev/null
 " I never use Ex mode, so re-run macros instead
 nnoremap Q @@
 " behavior for line numbers and current line
@@ -60,6 +59,12 @@ command WQ wq
 "{{{
 " + to write out buffers and run make
 nnoremap + :wa<bar>:make<bar><cr>
+" Show matching brackets
+set showmatch
+" Matching settings
+set ignorecase
+set smartcase
+set incsearch
 " Indentation and other settings for common languages/formats
 set shiftwidth=2
 set tabstop=2
