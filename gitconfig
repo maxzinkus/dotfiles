@@ -31,3 +31,5 @@
     ctags = !.git/hooks/ctags
 [rerere]
     enabled = true
+[pull]
+	ff = only

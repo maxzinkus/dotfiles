@@ -10,9 +10,6 @@ fi
 # Update ubuntu packages and clean up
 echo -e "\e[34mapt update\e[0m"
 sudo apt update ; sudo apt full-upgrade ; sudo apt autoremove --purge ; sudo apt autoclean
-# Update snaps
-echo -e "\e[34msnap refresh\e[0m"
-sudo snap refresh
 
 # Drop privs in case any of the scripts below try something cheeky
 sudo -K
@@ -57,10 +54,5 @@ do if [ "$theme" != "example.zsh-theme" ]
     fi
 done
 popd
-
-# Update language packages
-echo -e "\e[34mUpdating Rust\e[0m"
-rustup update
-cargo install-update -a
 
 touch ~/.last-update-run

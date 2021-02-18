@@ -1,5 +1,4 @@
-" vimrc
-" General vim behavior and mappings
+" vimrc General vim behavior and mappings
 "{{{
 set nocompatible
 " push more characters through to the terminal per cycle

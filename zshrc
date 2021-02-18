@@ -1,3 +1,8 @@
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
 # Prompt for updates
 if [ -f ~/.last-update-run ]
   # if we haven't asked today
@@ -13,23 +18,23 @@ fi
 else echo "~/.last-update-run file not found." >&2
 fi
 
-# Prompt for backups
-if [ -f ~/.last-backup-run ]
-  # if we haven't asked today
-then if [ $(date -Idate -r ~/.last-backup-run) != $(date -Idate) ]
-  # only ask once per day
-then touch ~/.last-backup-run
-  read -q "REPLY?Would you like to back up to remote storage? [y/N] "
-  echo ""
-  if [ $REPLY = "y" ]
-  then if ~/.local/bin/backup.zsh
-  then echo "Backup successful"
-  else echo "Backup failed"
-  fi
-  fi
-fi
-else echo "~/.last-backup-run file not found." >&2
-fi
+## Prompt for backups
+#if [ -f ~/.last-backup-run ]
+#  # if we haven't asked today
+#then if [ $(date -Idate -r ~/.last-backup-run) != $(date -Idate) ]
+#  # only ask once per day
+#then touch ~/.last-backup-run
+#  read -q "REPLY?Would you like to back up to remote storage? [y/N] "
+#  echo ""
+#  if [ $REPLY = "y" ]
+#  then if ~/.local/bin/backup.zsh
+#  then echo "Backup successful"
+#  else echo "Backup failed"
+#  fi
+#  fi
+#fi
+#else echo "~/.last-backup-run file not found." >&2
+#fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -62,6 +67,7 @@ HIST_STAMPS="dd.mm.yyyy"
 HIST_FIND_NO_DUPS="true"
 HIST_IGNORE_ALL_DUPS="true"
 HIST_SAVE_NO_DUPS="true"
+HIST_IGNORE_SPACE="true"
 
 # systemd
 export SYSTEMD_EDITOR=vim
@@ -154,8 +160,6 @@ function clang() {
 function evince() {
     /usr/bin/evince $@ >/dev/null 2>&1 &
 }
-
-source ~/.opam.zsh
 
 autoload -Uz compinit
 compinit
