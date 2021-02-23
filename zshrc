@@ -18,23 +18,23 @@ fi
 else echo "~/.last-update-run file not found." >&2
 fi
 
-## Prompt for backups
-#if [ -f ~/.last-backup-run ]
-#  # if we haven't asked today
-#then if [ $(date -Idate -r ~/.last-backup-run) != $(date -Idate) ]
-#  # only ask once per day
-#then touch ~/.last-backup-run
-#  read -q "REPLY?Would you like to back up to remote storage? [y/N] "
-#  echo ""
-#  if [ $REPLY = "y" ]
-#  then if ~/.local/bin/backup.zsh
-#  then echo "Backup successful"
-#  else echo "Backup failed"
-#  fi
-#  fi
-#fi
-#else echo "~/.last-backup-run file not found." >&2
-#fi
+# Prompt for backups
+if [ -f ~/.last-backup-run ]
+  # if we haven't asked today
+then if [ $(date -Idate -r ~/.last-backup-run) != $(date -Idate) ]
+  # only ask once per day
+then touch ~/.last-backup-run
+  read -q "REPLY?Would you like to back up to remote storage? [y/N] "
+  echo ""
+  if [ $REPLY = "y" ]
+  then if ~/.local/bin/backup.zsh
+  then echo "Backup successful"
+  else echo "Backup failed"
+  fi
+  fi
+fi
+else echo "~/.last-backup-run file not found." >&2
+fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
