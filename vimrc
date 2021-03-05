@@ -286,6 +286,7 @@ noremap <leader>ct :ColorToggle<cr>
 "}}}
 " - VimWiki
 "{{{
+let g:vimwiki_global_ext = 0 " disable vimwiki outside vimwiki directory
 let g:vimwiki_list = [{'path': '~/.vimwiki', 'path_html': '~/Documents/VimWiki'}]
 noremap <leader>wx :VimwikiDeleteLink<cr>
 noremap <leader>wr :VimwikiRenameLink<cr>
