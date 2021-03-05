@@ -2,8 +2,7 @@ skip_global_compinit=1
 
 export EDITOR="vim"
 
-alias pbcopy='xclip -selection clipboard'
-alias pbpaste='xclip -selection clipboard -o'
+alias pbcopy='kitty +kitten clipboard'
 
 function vim-plug() {
     if [ $ARGC -eq 2 ] && [ ! -e ~/.vim/pack/plugins/start/"$1" ]
