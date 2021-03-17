@@ -6,7 +6,7 @@ set ttyfast
 " auto-update if changes are detected
 set autoread
 " make colors vibrant
-source ~/.vim/happy_hacking.vim
+colorscheme deus
 " disable mouse
 set mouse=""
 " disable intro text
