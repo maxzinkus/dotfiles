@@ -185,6 +185,7 @@ set infercase
 "{{{
 let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
+let g:ale_python_pylint_options = '-d protected-access'
 nmap <leader>ll :ALEToggle<cr>
 nmap <C-n> :ALENext<cr>
 nmap <C-p> :ALEPrevious<cr>
