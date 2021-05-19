@@ -28,8 +28,9 @@ set backupskip=/tmp/*
 set tags+=.tags
 " U is a reasonable inverse of u
 nnoremap U <C-R>
-" decrement can't be tmux prefix
-noremap <C-d> <C-x>
+" <count><C-e> moves the content <count> lines up
+" so <count><C-d> can move it down
+noremap <C-d> <C-y>
 " make Y behave like other linewise operations
 nnoremap Y y$
 " I never use Ex mode, so re-run macros instead
@@ -103,13 +104,13 @@ noremap <leader>fl :loadview<cr>
 " - Autocmd
 "{{{
 if has("autocmd")
-    autocmd FileType py,python,hs setlocal shiftwidth=4 tabstop=4 colorcolumn=80
-    autocmd FileType c,h,java,cpp,hpp,rust,sh,css,js,go setlocal shiftwidth=3 tabstop=3 colorcolumn=80
+    autocmd FileType py,python,hs setlocal shiftwidth=4 tabstop=4 colorcolumn=80 textwidth=80
+    autocmd FileType c,h,java,cpp,hpp,rust,sh,css,js,go setlocal shiftwidth=3 tabstop=3 colorcolumn=80 textwidth=80
     autocmd FileType rust nnoremap <buffer> + :wa<bar>:!cargo build<cr>
-    autocmd FileType html,xml,markdown,md,txt,text setlocal shiftwidth=2 tabstop=2 colorcolumn=80
-    autocmd FileType markdown,md,txt,text setlocal textwidth=80 nofoldenable
+    autocmd FileType html,xml,markdown,md,txt,text setlocal shiftwidth=2 tabstop=2 colorcolumn=80 textwidth=80
+    autocmd FileType markdown,md,txt,text setlocal colorcolumn=80 textwidth=80 nofoldenable
     autocmd FileType gitcommit setlocal shiftwidth=2 tabstop=2 colorcolumn=73 nofoldenable
-    autocmd FileType gitconfig setlocal shiftwidth=4 tabstop=4 colorcolumn=80
+    autocmd FileType gitconfig setlocal shiftwidth=4 tabstop=4 colorcolumn=80 textwidth=80
     autocmd FileType vim setlocal shiftwidth=4 tabstop=4 foldmethod=marker foldmarker=\"{{{,\"}}}
     autocmd FileType zsh setlocal nofoldenable
     autocmd FileType vimwiki setlocal modeline
