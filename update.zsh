@@ -31,9 +31,9 @@ local dsfurl="https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/th
 local dsftmp=$(mktemp)
 wget -q -O $dsftmp $dsfurl
 if [ $(sha256sum $dsftmp | awk '{ print $1 }') != $(sha256sum ~/.local/bin/diff-so-fancy | awk '{ print $1 }') ]
-then echo -e "\e[34mNew diff-so-fancy available\e[0m" ;
+then echo -e "New diff-so-fancy available" ;
      cp $dsftmp ~/.local/bin/diff-so-fancy.new ; chmod +x ~/.local/bin/diff-so-fancy.new ;
-     echo -e "\e[34mSaved to ~/.local/bin.diff-so-fancy.new\e[0m" ;
+     echo -e "Saved to ~/.local/bin/diff-so-fancy.new" ;
 fi
 if [ -f $dsftmp ]
 then rm $dsftmp

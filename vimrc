@@ -115,6 +115,7 @@ if has("autocmd")
     autocmd FileType zsh setlocal nofoldenable
     autocmd FileType vimwiki setlocal modeline
     autocmd FileType tex,plaintex setlocal colorcolumn=80 textwidth=80 foldmethod=marker foldmarker=%{{{,%}}}
+    autocmd VimEnter * if &diff | setlocal nofoldenable | endif
 endif
 filetype plugin indent on
 "}}}
