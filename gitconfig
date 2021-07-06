@@ -27,6 +27,7 @@
     email = 5474655+maxzinkus@users.noreply.github.com
 [init]
     templatedir = ~/.config/git_template
+	defaultBranch = main
 [alias]
     ctags = !.git/hooks/ctags
 [rerere]
