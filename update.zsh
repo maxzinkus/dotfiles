@@ -33,7 +33,8 @@ wget -q -O $dsftmp $dsfurl
 if [ $(sha256sum $dsftmp | awk '{ print $1 }') != $(sha256sum ~/.local/bin/diff-so-fancy | awk '{ print $1 }') ]
 then echo -e "New diff-so-fancy available" ;
      cp $dsftmp ~/.local/bin/diff-so-fancy.new ; chmod +x ~/.local/bin/diff-so-fancy.new ;
-     echo -e "Saved to ~/.local/bin/diff-so-fancy.new" ;
+     echo "Saved to ~/.local/bin/diff-so-fancy.new" ;
+else echo "Already up to date."
 fi
 if [ -f $dsftmp ]
 then rm $dsftmp
