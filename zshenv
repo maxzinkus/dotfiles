@@ -46,3 +46,5 @@ function omz-update {
     # Remove update lock if it exists
     command rm -rf "$ZSH/log/update.lock"
 }
+
+. "$HOME/.cargo/env"
