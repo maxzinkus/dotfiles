@@ -160,6 +160,9 @@ function evince() {
     /usr/bin/evince $@ >/dev/null 2>&1 &
 }
 
+# Custom fpath for completions (from `rustup completions`)
+fpath+=~/.zfunc
+
 autoload -Uz compinit
 compinit
 # Completion for kitty
