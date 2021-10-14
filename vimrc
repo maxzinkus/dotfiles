@@ -5,8 +5,8 @@ set nocompatible
 set ttyfast
 " auto-update if changes are detected
 set autoread
-" make colors vibrant
-colorscheme deus
+" colors!
+colorscheme onehalfdark
 " disable mouse
 set mouse=""
 " disable intro text
