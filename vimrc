@@ -293,12 +293,8 @@ noremap <leader>ct :ColorToggle<cr>
 "{{{
 let g:vimwiki_global_ext = 0 " disable vimwiki outside vimwiki directory
 let g:vimwiki_list = [{'path': '~/.vimwiki', 'path_html': '~/Documents/VimWiki'}]
-noremap <leader>wx :VimwikiDeleteLink<cr>
-noremap <leader>wr :VimwikiRenameLink<cr>
-noremap <leader>di :VimwikiDiaryIndex<cr>:VimwikiDiaryGenerateLinks<cr>
-noremap <leader>dd :VimwikiMakeDiaryNote<cr>
-noremap <leader>dp :VimwikiDiaryPrevDay<cr>
-noremap <leader>dn :VimwikiDiaryNextDay<cr>
+noremap <leader>wx :VimwikiDeleteFile<cr>
+noremap <leader>wr :VimwikiRenameFile<cr>
 "}}}
 "}}}
 " Load plugins and generate help tags for everything - must be at end
