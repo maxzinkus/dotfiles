@@ -23,7 +23,7 @@
     new = green bold
     whitespace = red reverse
 [user]
-    name = Max
+    name = Max Zinkus
     email = 5474655+maxzinkus@users.noreply.github.com
 [init]
     templatedir = ~/.config/git_template
@@ -34,3 +34,5 @@
     enabled = true
 [pull]
     rebase = false
+[credential]
+	helper = cache

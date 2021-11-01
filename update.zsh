@@ -42,8 +42,9 @@ fi
 
 # Update custom oh-my-zsh themes/plugins (sadly doesn't play nice with submodules)
 pushd ~/.oh-my-zsh/custom/plugins
+echo -e "\e[31mWARN: Skipping 'fast-syntax-highlighting'\e[0m"
 for plugin in $(ls)
-do if [ "$plugin" != "example" ]
+do if [ "$plugin" != "example" -a "$plugin" != "fast-syntax-highlighting" ]
     then pushd "$plugin" ; echo -e "\e[34mUpdating $plugin\e[0m" ; git pull ; popd
     fi
 done
