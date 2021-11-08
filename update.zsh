@@ -26,19 +26,19 @@ echo -e "\e[34mUpdating vim plugins\e[0m"
 vim-plug-update
 
 # Check for diff-so-fancy updates by comparing hashes
-echo -e "\e[34mChecking diff-so-fancy for updates\e[0m"
-local dsfurl="https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy"
-local dsftmp=$(mktemp)
-wget -q -O $dsftmp $dsfurl
-if [ $(sha256sum $dsftmp | awk '{ print $1 }') != $(sha256sum ~/.local/bin/diff-so-fancy | awk '{ print $1 }') ]
-then echo -e "New diff-so-fancy available" ;
-     cp $dsftmp ~/.local/bin/diff-so-fancy.new ; chmod +x ~/.local/bin/diff-so-fancy.new ;
-     echo "Saved to ~/.local/bin/diff-so-fancy.new" ;
-else echo "Already up to date."
-fi
-if [ -f $dsftmp ]
-then rm $dsftmp
-fi
+#echo -e "\e[34mChecking diff-so-fancy for updates\e[0m"
+#local dsfurl="https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy"
+#local dsftmp=$(mktemp)
+#wget -q -O $dsftmp $dsfurl
+#if [ $(sha256sum $dsftmp | awk '{ print $1 }') != $(sha256sum ~/.local/bin/diff-so-fancy | awk '{ print $1 }') ]
+#then echo -e "New diff-so-fancy available" ;
+#     cp $dsftmp ~/.local/bin/diff-so-fancy.new ; chmod +x ~/.local/bin/diff-so-fancy.new ;
+#     echo "Saved to ~/.local/bin/diff-so-fancy.new" ;
+#else echo "Already up to date."
+#fi
+#if [ -f $dsftmp ]
+#then rm $dsftmp
+#fi
 
 # Update custom oh-my-zsh themes/plugins (sadly doesn't play nice with submodules)
 pushd ~/.oh-my-zsh/custom/plugins
