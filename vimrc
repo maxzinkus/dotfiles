@@ -143,7 +143,7 @@ set splitbelow
 " resize splits automatically
 au VimResized * :wincmd =
 function s:CheckClosePanes()
-    if &columns < 177
+    if &columns < minPaneWidth
         execute "TagbarClose"
         execute "NERDTreeClose"
     else
