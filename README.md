@@ -34,6 +34,12 @@ equivalent of Debian*
 * bufkill
 * polyglot
 * VimWiki
+* tagbar
+* NERDTree
+* rust
+* vim-matchup
+* vim-repeat
+* vim-surround
 
 ## other
 * diff-so-fancy
