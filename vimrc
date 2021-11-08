@@ -1,12 +1,16 @@
 " vimrc General vim behavior and mappings
 "{{{
 set nocompatible
+if (has("termguicolors"))
+set termguicolors
+endif
 " push more characters through to the terminal per cycle
 set ttyfast
 " auto-update if changes are detected
 set autoread
 " colors!
-colorscheme onehalfdark
+set background=dark
+colorscheme gruvbox
 " disable mouse
 set mouse=""
 " disable intro text
@@ -93,8 +97,9 @@ function! MyFoldText()
 endfunction
 set foldtext=MyFoldText()
 highlight Folded ctermfg=darkgrey ctermbg=NONE
-" start with folding off
+" start with folding off, and turn off if opening a diff split
 setlocal nofoldenable
+autocmd VimEnter * if &diff | setlocal nofoldenable | endif
 " toggle folding
 noremap <leader>ff :set foldenable!<cr>
 " save/restore manual folds
@@ -103,22 +108,20 @@ noremap <leader>fl :loadview<cr>
 "}}}
 " - Autocmd
 "{{{
-if has("autocmd")
-    autocmd FileType py,python,hs setlocal shiftwidth=4 tabstop=4 colorcolumn=80 textwidth=80
-    autocmd FileType c,h,java,cpp,hpp,rust,sh,css,js,go setlocal shiftwidth=3 tabstop=3 colorcolumn=80 textwidth=80
-    autocmd FileType rust nnoremap <buffer> + :wa<bar>:!cargo build<cr>
-    autocmd FileType html,xml,markdown,md,txt,text setlocal shiftwidth=2 tabstop=2 colorcolumn=80 textwidth=80
-    autocmd FileType markdown,md,txt,text setlocal colorcolumn=80 textwidth=80 nofoldenable
-    autocmd FileType gitcommit setlocal shiftwidth=2 tabstop=2 colorcolumn=73 nofoldenable
-    autocmd FileType gitconfig setlocal shiftwidth=4 tabstop=4 colorcolumn=80 textwidth=80
-    autocmd FileType vim setlocal shiftwidth=4 tabstop=4 foldmethod=marker foldmarker=\"{{{,\"}}}
-    autocmd FileType zsh setlocal nofoldenable
-    autocmd FileType vimwiki setlocal modeline
-    autocmd FileType tex,plaintex setlocal colorcolumn=80 textwidth=80 foldmethod=marker foldmarker=%{{{,%}}}
-    autocmd FileType ale-preview setlocal nofoldenable
-    autocmd FileType make setlocal shiftwidth=8 tabstop=8
-    autocmd VimEnter * if &diff | setlocal nofoldenable | endif
-endif
+" File type configurations
+autocmd FileType py,python,hs setlocal shiftwidth=4 tabstop=4 colorcolumn=80 textwidth=80
+autocmd FileType c,h,java,cpp,hpp,rust,sh,css,js,go setlocal shiftwidth=3 tabstop=3 colorcolumn=80 textwidth=80
+autocmd FileType rust nnoremap <buffer> + :wa<bar>:!cargo build<cr>
+autocmd FileType html,xml,markdown,md,txt,text setlocal shiftwidth=2 tabstop=2 colorcolumn=80 textwidth=80
+autocmd FileType markdown,md,txt,text setlocal colorcolumn=80 textwidth=80 nofoldenable
+autocmd FileType gitcommit setlocal shiftwidth=2 tabstop=2 colorcolumn=73 nofoldenable
+autocmd FileType gitconfig setlocal shiftwidth=4 tabstop=4 colorcolumn=80 textwidth=80
+autocmd FileType vim setlocal shiftwidth=4 tabstop=4 foldmethod=marker foldmarker=\"{{{,\"}}}
+autocmd FileType zsh setlocal nofoldenable
+autocmd FileType vimwiki setlocal modeline
+autocmd FileType tex,plaintex setlocal colorcolumn=80 textwidth=80 foldmethod=marker foldmarker=%{{{,%}}}
+autocmd FileType ale-preview setlocal nofoldenable
+autocmd FileType make setlocal shiftwidth=8 tabstop=8
 filetype plugin indent on
 "}}}
 "}}}
@@ -146,12 +149,18 @@ nmap ; :Buffers<cr>
 nmap <leader>e :Files<cr>
 nmap <leader>r :Marks<cr>
 nmap <leader>t :Tags<cr>
+nmap <C-\> <C-^>
 " move between open buffers
 map <PageDown> :bnext<cr>
 map <PageUp> :bprev<cr>
 "}}}
 " Plugins and external programs
 "{{{
+" - man
+"{{{
+runtime ftplugin/man.vim
+set keywordprg=:Man
+"}}}
 " - netrw
 "{{{
 " when browsing a directory, display a tree (toggle dirs with <cr>)
@@ -190,9 +199,10 @@ set infercase
 let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
 let g:ale_python_pylint_options = '-d protected-access'
+let g:ale_open_list = 1
 nmap <leader>ll :ALEToggle<cr>
-nmap <C-n> :ALENext<cr>
-nmap <C-p> :ALEPrevious<cr>
+nmap <leader>ln :ALENext<cr>
+nmap <leader>lp :ALEPrevious<cr>
 "}}}
 " - Bufferline
 "{{{
@@ -269,11 +279,24 @@ augroup lightline#ale
     autocmd User ALEFixPost call lightline#update()
 augroup END
 "}}}
+" - NERDTree
+"{{{
+noremap <C-n> :NERDTree<cr>
+" Start NERDTree and put the cursor back in the other window.
+autocmd VimEnter * NERDTree | wincmd p
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+" Close the tab if NERDTree is the only window remaining in it.
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+"}}}
+" - tagbar
+"{{{
+nmap <C-t> :TagbarToggle<cr>
+autocmd VimEnter * nested :TagbarOpen
+"}}}
 " - Vimdiff
 "{{{
-if has("patch-8.1.0360")
-    set diffopt+=internal,algorithm:patience
-endif
+set diffopt+=internal,algorithm:patience
 noremap <leader>1 :diffget LOCAL; diffupdate<cr>
 noremap <leader>2 :diffget BASE; diffupdate<cr>
 noremap <leader>3 :diffget REMOTE; diffupdate<cr>
