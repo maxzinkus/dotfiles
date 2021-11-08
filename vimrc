@@ -1,11 +1,11 @@
 " vimrc General vim behavior and mappings
 "{{{
 set nocompatible
-if (has("termguicolors"))
 set termguicolors
-endif
 " push more characters through to the terminal per cycle
 set ttyfast
+" don't update the screen during commands
+set lazyredraw
 " auto-update if changes are detected
 set autoread
 " colors!
@@ -129,7 +129,6 @@ filetype plugin indent on
 "{{{
 " super speedy splits
 noremap <leader>v :vsplit<cr>
-noremap <leader>b :split<cr>
 noremap <leader>x :BD<cr>
 " Navigate splits quickly
 noremap <LEFT> <C-w>h
@@ -141,6 +140,16 @@ set splitright
 set splitbelow
 " resize splits automatically
 au VimResized * :wincmd =
+function s:CheckClosePanes()
+    if &columns < 177
+        execute "TagbarClose"
+        execute "NERDTreeClose"
+    else
+        execute "NERDTree | wincmd p"
+        call tagbar#autoopen(1)
+    endif
+endfunction
+au VimResized * :call s:CheckClosePanes()
 "}}}
 " Buffers and fzf
 "{{{
@@ -281,7 +290,7 @@ augroup END
 "}}}
 " - NERDTree
 "{{{
-noremap <C-n> :NERDTree<cr>
+noremap <C-n> :NERDTreeToggle<cr>
 " Start NERDTree and put the cursor back in the other window.
 autocmd VimEnter * NERDTree | wincmd p
 " Exit Vim if NERDTree is the only window remaining in the only tab.
@@ -292,7 +301,7 @@ autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTa
 " - tagbar
 "{{{
 nmap <C-t> :TagbarToggle<cr>
-autocmd VimEnter * nested :TagbarOpen
+autocmd VimEnter * nested :call tagbar#autoopen(1)
 "}}}
 " - Vimdiff
 "{{{
