@@ -214,6 +214,11 @@ let g:ale_open_list = 1
 nmap <leader>ll :ALEToggle<cr>
 nmap <leader>ln :ALENext<cr>
 nmap <leader>lp :ALEPrevious<cr>
+" close the window if the quickfix is the last open pane
+aug QFClose
+  au!
+  au WinEnter * if winnr('$') == 1 && &buftype == "quickfix"|q|endif
+aug END
 "}}}
 " - Bufferline
 "{{{
