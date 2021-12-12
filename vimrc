@@ -1,6 +1,7 @@
 " vimrc General vim behavior and mappings
 "{{{
 set nocompatible
+set backspace=indent,eol,start
 set termguicolors
 " push more characters through to the terminal per cycle
 set ttyfast
@@ -312,7 +313,6 @@ autocmd VimEnter * nested if &columns > minPaneWidth | call tagbar#autoopen(1) |
 "}}}
 " - Vimdiff
 "{{{
-set diffopt+=internal,algorithm:patience
 noremap <leader>1 :diffget LOCAL; diffupdate<cr>
 noremap <leader>2 :diffget BASE; diffupdate<cr>
 noremap <leader>3 :diffget REMOTE; diffupdate<cr>

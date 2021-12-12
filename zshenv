@@ -2,7 +2,9 @@ skip_global_compinit=1
 
 export EDITOR="vim"
 
-alias pbcopy='kitty +kitten clipboard'
+eval "$(/opt/homebrew/bin/brew shellenv)"
+export HOMEBREW_NO_EMOJI=1
+export HOMEBREW_NO_INSECURE_REDIRECT=1
 
 function vim-plug() {
     if [ $ARGC -eq 2 ] && [ ! -e ~/.vim/pack/plugins/start/"$1" ]
