@@ -6,6 +6,8 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 export HOMEBREW_NO_EMOJI=1
 export HOMEBREW_NO_INSECURE_REDIRECT=1
 
+export PATH=$PATH:~/.bin
+
 function vim-plug() {
     if [ $ARGC -eq 2 ] && [ ! -e ~/.vim/pack/plugins/start/"$1" ]
     then pushd ~/.vim/pack >/dev/null
@@ -36,17 +38,6 @@ function vim-plug-remove() {
         popd >/dev/null
     else echo "usage: vim-plug-remove <name>" ; return 1
     fi
-}
-
-function omz-update {
-    local ZSH="/home/user/.oh-my-zsh"
-    local ZSH_CACHE_DIR="$ZSH/cache"
-    env ZSH="$ZSH" sh "$ZSH/tools/upgrade.sh"
-    # Update last updated file
-    zmodload zsh/datetime
-    echo "LAST_EPOCH=$(( EPOCHSECONDS / 60 / 60 / 24 ))" >! "${ZSH_CACHE_DIR}/.zsh-update"
-    # Remove update lock if it exists
-    command rm -rf "$ZSH/log/update.lock"
 }
 
 . "$HOME/.cargo/env"
