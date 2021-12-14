@@ -323,11 +323,6 @@ noremap <leader>3 :diffget REMOTE; diffupdate<cr>
 " :wqa to accept and quit
 " :cq to reject and quit
 "}}}
-" - Colorizer plugin
-"{{{
-let g:colorizer_fgcontrast=1
-noremap <leader>ct :ColorToggle<cr>
-"}}}
 " - VimWiki
 "{{{
 let g:vimwiki_global_ext = 0 " disable vimwiki outside vimwiki directory
