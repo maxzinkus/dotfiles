@@ -128,8 +128,6 @@ filetype plugin indent on
 "}}}
 " Splits
 "{{{
-" minimum width for NERDTree and Tagbar panes to open
-let minPaneWidth=100
 " super speedy splits
 noremap <leader>v :vsplit<cr>
 noremap <leader>x :BD<cr>
@@ -141,12 +139,15 @@ noremap <RIGHT> <C-w>l
 " open without replacing current view
 set splitright
 set splitbelow
-" resize splits automatically
-au VimResized * :wincmd =
+" minimum width for NERDTree and Tagbar panes to open
+let minPaneWidth=116
+let minDoublePaneWidth=216
 function s:CheckClosePanes()
-    if &columns < minPaneWidth
+    if &columns < minDoublePaneWidth
         execute "TagbarClose"
-        execute "NERDTreeClose"
+        if &columns < minPaneWidth
+            execute "NERDTreeClose"
+        endif
     else
         execute "NERDTree | wincmd p"
         call tagbar#autoopen(1)
@@ -163,8 +164,8 @@ nmap <leader>r :Marks<cr>
 nmap <leader>t :Tags<cr>
 nmap <C-\> <C-^>
 " move between open buffers
-map <PageDown> :bnext<cr>
-map <PageUp> :bprev<cr>
+map <Home> :bprev<cr>
+map <End> :bnext<cr>
 "}}}
 " Plugins and external programs
 "{{{
