@@ -215,6 +215,10 @@ let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
 let g:ale_python_pylint_options = '-d protected-access'
 let g:ale_open_list = 1
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+    \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+\}
 nmap <leader>ll :ALEToggle<cr>
 nmap <leader>ln :ALENext<cr>
 nmap <leader>lp :ALEPrevious<cr>
