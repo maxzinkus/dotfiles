@@ -14,12 +14,12 @@ CASE_SENSITIVE="false"
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
+zstyle ':omz:update' mode disabled  # disable automatic updates
 # zstyle ':omz:update' mode auto      # update automatically without asking
-zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-zstyle ':omz:update' frequency 7
+# zstyle ':omz:update' frequency 7
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -56,11 +56,10 @@ export RIPGREP_CONFIG_PATH="/home/user/.config/ripgrep/ripgrep.conf"
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Add wisely, as too many plugins slow down shell startup.
+# rustup and cargo are really slow!
 plugins=(
     zsh-autosuggestions
     colored-man-pages
-    cargo
-    rustup
     fd
     ripgrep
     safe-paste
@@ -89,6 +88,8 @@ function clang() {
 }
 
 export MANPATH="/usr/local/man:$MANPATH"
+
+source /opt/homebrew/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
 # Completion for kitty
 kitty + complete setup zsh | source /dev/stdin
