@@ -1,6 +1,6 @@
 #!/usr/bin/zsh
 
-if ! ssh -q backup -o RemoteCommand="exit" -o ConnectTimeout="5" >/dev/null 2>&1
+if ! ssh -q backup -o RemoteCommand="exit" -o ConnectTimeout="1" >/dev/null 2>&1
 then echo "Can't backup, no route to backup host." 1>&2 ; exit 1
 fi
 
