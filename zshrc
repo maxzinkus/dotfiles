@@ -4,7 +4,7 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/max/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="af-magic" # set by `omz`
 
 # Uncomment the following line to use case-sensitive completion.
@@ -51,7 +51,7 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
 export ZSH_AUTOSUGGEST_STRATEGY=("history")
 
 # Ripgrep
-export RIPGREP_CONFIG_PATH="/home/user/.config/ripgrep/ripgrep.conf"
+export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/ripgrep.conf"
 
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
