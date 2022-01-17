@@ -115,7 +115,7 @@ noremap <leader>fl :loadview<cr>
 autocmd FileType py,python,hs setlocal shiftwidth=4 tabstop=4 colorcolumn=80 textwidth=80
 autocmd FileType c,h,java,cpp,hpp,rust,sh,css,js,go setlocal shiftwidth=3 tabstop=3 colorcolumn=80 textwidth=80
 autocmd FileType rust nnoremap <buffer> + :wa<bar>:!cargo build<cr>
-autocmd FileType html,xml,markdown,md,txt,text setlocal shiftwidth=2 tabstop=2 colorcolumn=80 textwidth=80
+autocmd FileType html,xml,markdown,md,txt,text setlocal shiftwidth=2 tabstop=2 colorcolumn=120 textwidth=120
 autocmd FileType markdown,md,txt,text setlocal colorcolumn=80 textwidth=80 nofoldenable
 autocmd FileType gitcommit setlocal shiftwidth=2 tabstop=2 colorcolumn=73 nofoldenable
 autocmd FileType gitconfig setlocal shiftwidth=4 tabstop=4 colorcolumn=80 textwidth=80
