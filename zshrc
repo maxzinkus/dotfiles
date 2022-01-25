@@ -90,6 +90,7 @@ function clang() {
 export MANPATH="/usr/local/man:$MANPATH"
 
 source /opt/homebrew/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+export HOMEBREW_NO_INSECURE_REDIRECT=1
 
 # Completion for kitty
 kitty + complete setup zsh | source /dev/stdin
