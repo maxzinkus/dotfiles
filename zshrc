@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="af-magic" # set by `omz`
 
 # Uncomment the following line to use case-sensitive completion.
-CASE_SENSITIVE="false"
+CASE_SENSITIVE="true"
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
