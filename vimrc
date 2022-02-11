@@ -9,6 +9,8 @@ set ttyfast
 set lazyredraw
 " auto-update if changes are detected
 set autoread
+" auto-cd to working file dir
+set autochdir
 " colors!
 set background=dark
 colorscheme gruvbox
@@ -43,7 +45,12 @@ nnoremap Q @@
 " behavior for line numbers and current line
 set rnu
 set number
-set cursorline
+" Current line highlighting
+augroup CursorLine
+  au!
+  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  au WinLeave * setlocal nocursorline
+augroup END
 " sane movement through wrapping lines
 noremap j gj
 noremap k gk
