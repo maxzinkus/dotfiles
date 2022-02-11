@@ -4,9 +4,10 @@ export TERM="xterm-256color"
 export EDITOR="vim"
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
-export HOMEBREW_NO_EMOJI=1
 export HOMEBREW_NO_INSECURE_REDIRECT=1
+export HOMEBREW_NO_EMOJI=1
 export HOMEBREW_NO_ANALYTICS=1
+export HOMEBREW_NO_ENV_HINTS=1
 
 function vim-plug() {
     if [ $ARGC -eq 2 ] && [ ! -e ~/.vim/pack/plugins/start/"$1" ]

@@ -79,10 +79,10 @@ alias gp='git push'
 alias mv='mv -i'
 alias cp='cp -i'
 alias rm='rm -i'
-alias ls='exa --color=auto'
+alias ls='exa'
 alias la='exa -a'
-alias ll='exa -lh --git --color-scale'
-alias exa='exa -F --group-directories-first'
+alias ll='exa -l@ --git'
+alias exa='exa -F --group-directories-first --color-scale --color=automatic'
 function clang() {
     $(which -a clang | tail -n 1) --config ~/.config/clang/clang.cfg $@
 }
@@ -90,7 +90,6 @@ function clang() {
 export MANPATH="/usr/local/man:$MANPATH"
 
 source /opt/homebrew/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
-export HOMEBREW_NO_INSECURE_REDIRECT=1
 
 # Completion for kitty
 kitty + complete setup zsh | source /dev/stdin
