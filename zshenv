@@ -1,5 +1,3 @@
-skip_global_compinit=1
-
 export TERM="xterm-256color"
 export EDITOR="vim"
 
