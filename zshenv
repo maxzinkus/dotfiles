@@ -29,6 +29,7 @@ function vim-plug-remove() {
     if [ $ARGC -eq 1 ] && [ -d ~/.vim/pack/plugins/start/"$1" ] && [ -n "$1" ]
     then if read -q "TEMP?Remove plugin $1? [y/N] "
         then pushd ~/.vim/pack >/dev/null
+            echo ""
             git submodule deinit "plugins/start/$1" ;
             git rm "plugins/start/$1" ;
             rm -rf ".git/modules/plugins/start/$1" ;
