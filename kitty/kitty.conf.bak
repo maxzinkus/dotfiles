@@ -633,7 +633,7 @@ active_tab_font_style   normal
 
 #: The foreground and background colors
 
-background_opacity 0.85
+# background_opacity 1.0
 
 #: The opacity of the background. A number between 0 and 1, where 1 is
 #: opaque and 0 is fully transparent.  This will only work if
@@ -1397,6 +1397,6 @@ map kitty_mod+Y kitten hints --type path
 
 
 # BEGIN_KITTY_THEME
-# Chalk
+# 1984 Orwellian
 include current-theme.conf
 # END_KITTY_THEME
