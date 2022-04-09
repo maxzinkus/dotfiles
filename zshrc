@@ -73,6 +73,7 @@ export FZF_DEFAULT_OPTS="--ansi"
 
 alias python='python3'
 alias grep='rg'
+alias dc='cd'
 alias gs='git status'
 alias gc='git commit'
 alias gp='git push'
