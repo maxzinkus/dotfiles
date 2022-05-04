@@ -88,7 +88,7 @@ set expandtab
 set breakindent
 set foldmethod=indent
 " don't highlight long lines
-set synmaxcol=256
+set synmaxcol=1024
 "}}}
 " - Folding
 "{{{
@@ -123,13 +123,13 @@ autocmd FileType py,python,hs setlocal shiftwidth=4 tabstop=4 colorcolumn=80 tex
 autocmd FileType c,h,java,cpp,hpp,rust,sh,css,js,go setlocal shiftwidth=3 tabstop=3 colorcolumn=80 textwidth=80
 autocmd FileType rust nnoremap <buffer> + :wa<bar>:!cargo build<cr>
 autocmd FileType html,xml,markdown,md,txt,text setlocal shiftwidth=2 tabstop=2 colorcolumn=120 textwidth=120
-autocmd FileType markdown,md,txt,text setlocal colorcolumn=80 textwidth=80 nofoldenable
-autocmd FileType gitcommit setlocal shiftwidth=2 tabstop=2 colorcolumn=73 nofoldenable
+autocmd FileType markdown,md,txt,text setlocal colorcolumn=80 textwidth=80 nofoldenable spell spelllang=en_us
+autocmd FileType gitcommit setlocal shiftwidth=2 tabstop=2 colorcolumn=73 nofoldenable spell spelllang=en_us
 autocmd FileType gitconfig setlocal shiftwidth=4 tabstop=4 colorcolumn=80 textwidth=80
 autocmd FileType vim setlocal shiftwidth=4 tabstop=4 foldmethod=marker foldmarker=\"{{{,\"}}}
 autocmd FileType zsh setlocal nofoldenable
-autocmd FileType vimwiki setlocal modeline
-autocmd FileType tex,plaintex setlocal colorcolumn=80 textwidth=80 foldmethod=marker foldmarker=%{{{,%}}}
+autocmd FileType vimwiki setlocal modeline spell spelllang=en_us
+autocmd FileType tex,plaintex setlocal colorcolumn=80 textwidth=80 foldmethod=marker foldmarker=%{{{,%}}} spell spelllang=en_us
 autocmd FileType ale-preview setlocal nofoldenable
 autocmd FileType make setlocal shiftwidth=8 tabstop=8
 filetype plugin indent on
@@ -205,6 +205,7 @@ noremap <leader>n :set number!<cr>:set relativenumber!<cr>
 "{{{
 " toggle spellcheck
 noremap <leader>ss :setlocal spell!<cr>
+set spelllang=en_us
 " somewhat saner spell shortcuts
 noremap <leader>sn ]s
 noremap <leader>sp [s
