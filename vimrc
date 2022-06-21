@@ -341,9 +341,7 @@ noremap <leader>3 :diffget REMOTE; diffupdate<cr>
 " - VimWiki
 "{{{
 let g:vimwiki_global_ext = 0 " disable vimwiki outside vimwiki directory
-let g:vimwiki_list = [{'path': '~/.vimwiki', 'path_html': '~/Documents/VimWiki'}]
-noremap <leader>wx :VimwikiDeleteFile<cr>
-noremap <leader>wr :VimwikiRenameFile<cr>
+let g:vimwiki_list = [{'path': '~/.vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
 "}}}
 "}}}
 " Load plugins and generate help tags for everything - must be at end
