@@ -93,6 +93,7 @@ function clang() {
 export MANPATH="/usr/local/man:$MANPATH"
 
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+export FPATH="/opt/homebrew/share/zsh/site-functions:$FPATH"
 
 # Completion for kitty
 kitty + complete setup zsh | source /dev/stdin
