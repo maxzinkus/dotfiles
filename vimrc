@@ -67,7 +67,7 @@ command WQ wq
 " Reopen at last closed line
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 "}}}
-" Autocmd, formatting, folding, and code-specific configs
+" General (Settings, Folding, Autocmd)
 "{{{
 " - Settings
 "{{{
