@@ -166,7 +166,7 @@ au VimResized * :call s:CheckClosePanes()
 "}}}
 " Buffers and fzf
 "{{{
-set rtp+=~/.fzf
+set rtp+=/opt/homebrew/opt/fzf
 nmap ; :Buffers<cr>
 nmap <leader>e :Files<cr>
 nmap <leader>r :Marks<cr>
