@@ -46,6 +46,7 @@ nnoremap Q @@
 set rnu
 set number
 " Current line highlighting
+set cursorlineopt=number
 augroup CursorLine
   au!
   au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
@@ -119,17 +120,17 @@ noremap <leader>fl :loadview<cr>
 " - Autocmd
 "{{{
 " File type configurations
-autocmd FileType py,python,hs setlocal shiftwidth=4 tabstop=4 colorcolumn=80 textwidth=80
-autocmd FileType c,h,java,cpp,hpp,rust,sh,css,js,go setlocal shiftwidth=3 tabstop=3 colorcolumn=80 textwidth=80
+autocmd FileType py,python,hs setlocal shiftwidth=4 tabstop=4
+autocmd FileType c,h,java,cpp,hpp,rust,sh,css,js,go setlocal shiftwidth=3 tabstop=3
 autocmd FileType rust nnoremap <buffer> + :wa<bar>:!cargo build<cr>
-autocmd FileType html,xml,markdown,md,txt,text setlocal shiftwidth=2 tabstop=2 colorcolumn=120 textwidth=120
-autocmd FileType markdown,md,txt,text setlocal colorcolumn=80 textwidth=80 nofoldenable spell spelllang=en_us
+autocmd FileType html,xml,markdown,md,txt,text setlocal shiftwidth=2 tabstop=2
+autocmd FileType markdown,md,txt,text setlocal nofoldenable spell spelllang=en_us
 autocmd FileType gitcommit setlocal shiftwidth=2 tabstop=2 colorcolumn=73 nofoldenable spell spelllang=en_us
-autocmd FileType gitconfig setlocal shiftwidth=4 tabstop=4 colorcolumn=80 textwidth=80
+autocmd FileType gitconfig setlocal shiftwidth=4 tabstop=4
 autocmd FileType vim setlocal shiftwidth=4 tabstop=4 foldmethod=marker foldmarker=\"{{{,\"}}}
 autocmd FileType zsh setlocal nofoldenable
 autocmd FileType vimwiki setlocal modeline spell spelllang=en_us
-autocmd FileType tex,plaintex setlocal colorcolumn=80 textwidth=80 foldmethod=marker foldmarker=%{{{,%}}} spell spelllang=en_us
+autocmd FileType tex,plaintex setlocal foldmethod=marker foldmarker=%{{{,%}}} spell spelllang=en_us
 autocmd FileType ale-preview setlocal nofoldenable
 autocmd FileType make setlocal shiftwidth=8 tabstop=8
 filetype plugin indent on
@@ -233,7 +234,7 @@ nmap <leader>lp :ALEPrevious<cr>
 " close the window if the quickfix is the last open pane
 aug QFClose
   au!
-  au WinEnter * if winnr('$') == 1 && &buftype == "quickfix"|q|endif
+  au WinEnter * if (winnr('$') == 1 || (winnr('$') == 2 && exists('g:NERDTree') && g:NERDTree.IsOpen())) && &buftype == "quickfix"|q|endif
 aug END
 "}}}
 " - Bufferline
@@ -344,9 +345,14 @@ let g:vimwiki_global_ext = 0 " disable vimwiki outside vimwiki directory
 let g:vimwiki_list = [{'path': '~/.vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
 "}}}
 "}}}
-" Load plugins and generate help tags for everything - must be at end
+" Epilogue
 "{{{
+" Load plugins and generate help tags for everything - must be at end
 packloadall
 silent! helptags ALL
 set secure
+" Set transparency after plugins loaded in case of overridden bg
+hi Normal guibg=NONE ctermbg=NONE
+hi CursorLineNr ctermbg=NONE guibg=NONE
+hi Todo ctermbg=NONE guibg=NONE
 "}}}
