@@ -1,3 +1,4 @@
+export SHELL_SESSIONS_DISABLE=1 # disable macOS shared history -> setopt sharehistory in .zshrc instead
 export TERM="xterm-256color"
 export EDITOR="vim"
 

@@ -32,6 +32,9 @@ zstyle ':omz:update' mode disabled  # disable automatic updates
 # much, much faster.
 #DISABLE_UNTRACKED_FILES_DIRTY="true"
 
+# Use shared history across sessions
+setopt sharehistory
+
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # You can set one of the optional three formats:
