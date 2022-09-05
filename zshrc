@@ -72,7 +72,7 @@ source $ZSH/oh-my-zsh.sh
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --exclude .git --exclude .vim --color=always"
+export FZF_DEFAULT_COMMAND="fd --type file --hidden --exclude .git --exclude .vim --color=always"
 export FZF_DEFAULT_OPTS="--ansi"
 # Using highlight (http://www.andre-simon.de/doku/highlight/en/highlight.html)
 export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
