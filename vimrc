@@ -140,7 +140,9 @@ filetype plugin indent on
 " Splits
 "{{{
 " super speedy splits
-noremap <leader>v :vsplit<cr>
+noremap <leader>v :vnew<cr>
+noremap <leader>V :vsplit<cr>
+noremap <leader><cr> :new<cr>
 noremap <leader>x :BD<cr>
 " Navigate splits quickly
 noremap <LEFT> <C-w>h
