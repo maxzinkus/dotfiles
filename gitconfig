@@ -35,6 +35,6 @@
 [pull]
     rebase = false
 [credential]
-	helper = cache
+	helper = osxkeychain
 [push]
 	autoSetupRemote = true
