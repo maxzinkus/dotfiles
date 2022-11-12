@@ -41,4 +41,21 @@ function vim-plug-remove() {
     fi
 }
 
+function try_activate() {
+    swd="$(pwd)"
+    cwd="$swd"
+    while [ "$cwd" != "$HOME" -a "$cwd" != "/" ]
+    do if [ -d "venv" ]
+        then source venv/bin/activate ; break
+        else cd -q .. ; cwd="$(pwd)"
+        fi
+    done
+    if [ "$cwd" = "$HOME" -o "$cwd" = "/" ]
+    then if [ "$VIRTUAL_ENV" ]
+        then deactivate
+        fi
+    fi
+    cd -q "$swd"
+}
+
 . "$HOME/.cargo/env"
