@@ -187,14 +187,6 @@ map <End> :bnext<cr>
 runtime ftplugin/man.vim
 set keywordprg=:Man
 "}}}
-" - netrw
-"{{{
-" when browsing a directory, display a tree (toggle dirs with <cr>)
-let g:netrw_liststyle=3
-" when browsing a directory, default to opening in a vertical split
-let g:netrw_browse_split=2
-" copying and pasting
-"}}}
 " - copy/paste
 "{{{
 noremap <leader>p :setlocal paste!<cr>
@@ -324,11 +316,15 @@ autocmd VimEnter * if &columns > minPaneWidth | NERDTree | wincmd p | endif
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 " Close the tab if NERDTree is the only window remaining in it.
 autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+" If we're quitting from the main pane close the tagbar too
+autocmd QuitPre * TagbarClose
+let NERDTreeHijackNetrw=1
 "}}}
 " - tagbar
 "{{{
 nmap <C-t> :TagbarToggle<cr>
 autocmd VimEnter * nested if &columns > minPaneWidth | call tagbar#autoopen(1) | endif
+let g:tagbar_autoclose=0
 "}}}
 " - Vimdiff
 "{{{
