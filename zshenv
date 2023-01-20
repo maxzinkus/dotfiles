@@ -21,7 +21,7 @@ function vim-plug() {
 
 function vim-plug-update() {
     pushd ~/.vim/pack >/dev/null
-    git submodule update --remote --merge &&
+    git submodule update --init --recursive &&
     git commit -am "Updating plugins"
     popd >/dev/null
 }
