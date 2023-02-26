@@ -1,0 +1,5 @@
+" vimrc_custom_postrc Extended post-vimrc configurations
+" Set transparency after plugins loaded in case of overridden bg
+hi Normal guibg=NONE ctermbg=NONE
+hi CursorLineNr ctermbg=NONE guibg=NONE
+hi Todo ctermbg=NONE guibg=NONE

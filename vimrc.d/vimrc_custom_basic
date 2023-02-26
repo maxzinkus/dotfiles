@@ -1,0 +1,10 @@
+" vimrc_basic Extended basic vim configurations
+" Current line highlighting
+set cursorlineopt=number
+augroup CursorLine
+  au!
+  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  au WinLeave * setlocal nocursorline
+augroup END
+" Reopen at last closed line
+au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif

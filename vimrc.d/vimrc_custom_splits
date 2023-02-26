@@ -1,0 +1,16 @@
+" vimrc_splits Extended configuration for pane splitting
+" minimum width for NERDTree and Tagbar panes to open
+let minPaneWidth=116
+let minDoublePaneWidth=216
+function s:CheckClosePanes()
+    if &columns < minDoublePaneWidth
+        execute "TagbarClose"
+        if &columns < minPaneWidth
+            execute "NERDTreeClose"
+        endif
+    else
+        execute "NERDTree | wincmd p"
+        call tagbar#autoopen(1)
+    endif
+endfunction
+au VimResized * :call s:CheckClosePanes()
