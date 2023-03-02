@@ -101,7 +101,7 @@ function clang() {
 export MANPATH="/usr/local/man:$MANPATH"
 
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-export FPATH="/opt/homebrew/share/zsh/site-functions:$FPATH"
+export FPATH="/Users/max/.local/completions:/opt/homebrew/share/zsh/site-functions:$FPATH"
 
 # Completion for kitty
 autoload -Uz compinit
