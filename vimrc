@@ -14,7 +14,7 @@ set autoread
 set autochdir
 " colors!
 set background=dark
-colorscheme gruvbox
+colorscheme onedark
 " disable mouse
 set mouse=""
 " disable intro text
