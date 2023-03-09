@@ -92,7 +92,6 @@ alias la='exa -a'
 alias ll='exa -l@ --git'
 alias exa='exa -F --group-directories-first --color-scale --color=automatic'
 alias wim='vim ~/.vimwiki/index.md'
-alias :q='exit'
 chpwd_functions=( try_activate )
 function clang() {
     $(which -a clang | tail -n 1) --config ~/.config/clang/clang.cfg $@
