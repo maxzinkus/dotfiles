@@ -97,6 +97,8 @@ function clang() {
     $(which -a clang | tail -n 1) --config ~/.config/clang/clang.cfg $@
 }
 
+export GOPATH="/Users/max/.go"
+
 export MANPATH="/usr/local/man:$MANPATH"
 
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
