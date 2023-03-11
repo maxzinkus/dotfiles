@@ -2,7 +2,6 @@ export SHELL_SESSIONS_DISABLE=1 # disable macOS shared history -> setopt sharehi
 export TERM="xterm-256color"
 export EDITOR="vim"
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
 export HOMEBREW_NO_INSECURE_REDIRECT=1
 export HOMEBREW_NO_EMOJI=1
 export HOMEBREW_NO_ANALYTICS=1

@@ -1,3 +1,4 @@
+#zmodload zsh/zprof # uncomment for zsh profiling
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
@@ -59,7 +60,6 @@ export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/ripgrep.conf"
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Add wisely, as too many plugins slow down shell startup.
-# rustup and cargo are really slow!
 plugins=(
     zsh-autosuggestions
     colored-man-pages
@@ -68,7 +68,11 @@ plugins=(
     safe-paste
 )
 
-source $ZSH/oh-my-zsh.sh
+# Store zcomp dump files in a dedicated cache dir instead of home
+export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
+
+# Disable some random dir-related aliases omz tries to add (mostly bc it calls compinit)
+zstyle ':omz:directories' aliases no
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -77,11 +81,16 @@ export FZF_DEFAULT_OPTS="--ansi"
 # Using highlight (http://www.andre-simon.de/doku/highlight/en/highlight.html)
 export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 
+# load omz plugins
+source $ZSH/oh-my-zsh.sh
+
+# custom aliases
 alias python='python3'
 alias grep='rg'
 alias find='fd'
 alias dc='cd'
 alias gs='git status'
+alias gb='git branch -a'
 alias gc='git commit'
 alias gp='git push'
 alias mv='mv -i'
@@ -92,7 +101,10 @@ alias la='exa -a'
 alias ll='exa -l@ --git'
 alias exa='exa -F --group-directories-first --color-scale --color=automatic'
 alias wim='vim ~/.vimwiki/index.md'
+
+# check for and activate python3 venv after each cd
 chpwd_functions=( try_activate )
+
 function clang() {
     $(which -a clang | tail -n 1) --config ~/.config/clang/clang.cfg $@
 }
@@ -104,6 +116,7 @@ export MANPATH="/usr/local/man:$MANPATH"
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export FPATH="/Users/max/.local/completions:/opt/homebrew/share/zsh/site-functions:$FPATH"
 
-# Completion for kitty
+# Regenerate completions after everything is loaded
 autoload -Uz compinit
 compinit
+#zprof # uncomment for startup profiling
