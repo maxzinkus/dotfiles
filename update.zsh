@@ -56,5 +56,3 @@ do if [ "$theme" != "example.zsh-theme" ]
     fi
 done
 popd
-
-touch ~/.last-update-run
