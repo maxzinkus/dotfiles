@@ -7,6 +7,12 @@ export HOMEBREW_NO_EMOJI=1
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_ENV_HINTS=1
 
+export MANPATH="/usr/local/man:$MANPATH"
+
+export GOPATH="$HOME/.go"
+
+. "$HOME/.cargo/env"
+
 function vim-plug() {
     if [ $ARGC -eq 2 ] && [ ! -e ~/.vim/pack/plugins/start/"$1" ]
     then pushd ~/.vim/pack >/dev/null
@@ -56,5 +62,3 @@ function try_activate() {
     fi
     cd -q "$swd"
 }
-
-. "$HOME/.cargo/env"
