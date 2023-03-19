@@ -1,7 +1,8 @@
 #zmodload zsh/zprof # uncomment for zsh profiling
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
+    path=("$HOME/.local/bin" $path)
+    export PATH
 fi
 
 # Path to your oh-my-zsh installation.
@@ -48,31 +49,20 @@ HIST_IGNORE_ALL_DUPS="true"
 HIST_SAVE_NO_DUPS="true"
 HIST_IGNORE_SPACE="true"
 
+# disable lesshst
+export LESSHISTFILE="-"
+
 # zsh-autosuggestions
 export ZSH_AUTOSUGGEST_USE_ASYNC="true"
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=80
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
 export ZSH_AUTOSUGGEST_STRATEGY=("history")
 
+# zsh-syntax-highlighting
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 # Ripgrep
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/ripgrep.conf"
-
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-    zsh-autosuggestions
-    colored-man-pages
-    fd
-    ripgrep
-    safe-paste
-)
-
-# Store zcomp dump files in a dedicated cache dir instead of home
-export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
-
-# Disable some random dir-related aliases omz tries to add (mostly bc it calls compinit)
-zstyle ':omz:directories' aliases no
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -81,7 +71,35 @@ export FZF_DEFAULT_OPTS="--ansi"
 # Using highlight (http://www.andre-simon.de/doku/highlight/en/highlight.html)
 export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 
-# load omz plugins
+# always use base clang configuration
+clang () { $(which clang) --config "$HOME/.config/clang/clang.cfg" $@ }
+
+# check for and activate python3 venv after each cd
+chpwd_functions=( try_activate )
+
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+plugins=(
+    zsh-autosuggestions
+    colored-man-pages
+    fd
+    ripgrep
+    safe-paste
+)
+
+# add custom completion paths for brew and user
+if [ -d "/opt/homebrew/share/zsh/site-functions" ] ; then
+    fpath=("/opt/homebrew/share/zsh/site-functions" $fpath)
+    export FPATH
+fi
+if [ -d "$HOME/.local/completions" ] ; then
+    fpath=("$HOME/.local/completions" $fpath)
+    export FPATH
+fi
+
+# disable some random dir-related aliases omz tries to add (mostly bc it calls compinit)
+zstyle ':omz:directories' aliases no
+# load omz and plugins
 source $ZSH/oh-my-zsh.sh
 
 # custom aliases
@@ -102,21 +120,4 @@ alias ll='exa -l@ --git'
 alias exa='exa -F --group-directories-first --color-scale --color=automatic'
 alias wim='vim ~/.vimwiki/index.md'
 
-# check for and activate python3 venv after each cd
-chpwd_functions=( try_activate )
-
-function clang() {
-    $(which -a clang | tail -n 1) --config ~/.config/clang/clang.cfg $@
-}
-
-export GOPATH="/Users/max/.go"
-
-export MANPATH="/usr/local/man:$MANPATH"
-
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-export FPATH="/Users/max/.local/completions:/opt/homebrew/share/zsh/site-functions:$FPATH"
-
-# Regenerate completions after everything is loaded
-autoload -Uz compinit
-compinit
 #zprof # uncomment for startup profiling
