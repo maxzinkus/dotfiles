@@ -103,6 +103,7 @@ zstyle ':omz:directories' aliases no
 source $ZSH/oh-my-zsh.sh
 
 # custom aliases
+alias a='alpine'
 alias python='python3'
 alias grep='rg'
 alias find='fd'
