@@ -96,6 +96,10 @@ if [ -d "$HOME/.local/completions" ] ; then
     fpath=("$HOME/.local/completions" $fpath)
     export FPATH
 fi
+if [ -d "$HOME/.go/bin" ] ; then
+    PATH="$PATH:$HOME/.go/bin"
+    export PATH
+fi
 
 # disable some random dir-related aliases omz tries to add (mostly bc it calls compinit)
 zstyle ':omz:directories' aliases no
