@@ -103,11 +103,11 @@ function! MyFoldText()
 endfunction
 set foldtext=MyFoldText()
 highlight Folded ctermfg=darkgrey ctermbg=NONE
-" start with folding off, and turn off if opening a diff split
+" start with folding off unless it has been manually toggled in this buffer
 setlocal nofoldenable
-autocmd VimEnter * if &diff | setlocal nofoldenable | endif
-" toggle folding
-noremap <leader>ff :set foldenable!<cr>
+autocmd BufEnter * if !exists('b:foldmanual') | setlocal nofoldenable | endif
+" toggle folding and remember that we took manual control in this buffer
+noremap <leader>ff :set foldenable! <bar> :let b:foldmanual=1<cr>
 " save/restore manual folds
 noremap <leader>fs :mkview<cr>
 noremap <leader>fl :loadview<cr>
