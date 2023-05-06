@@ -37,7 +37,7 @@ function vim-plug-remove() {
         then pushd ~/.vim/pack >/dev/null
             echo ""
             git submodule deinit "plugins/start/$1" ;
-            git rm "plugins/start/$1" ;
+            git rm -r "plugins/start/$1" ;
             rm -rf ".git/modules/plugins/start/$1" ;
             git commit -m "Delete plugin $1" ;
         fi
