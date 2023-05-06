@@ -101,6 +101,8 @@ if [ -d "$HOME/.go/bin" ] ; then
     export PATH
 fi
 
+# enable zoxide (z/autojump)
+eval "$(zoxide init zsh)"
 # disable some random dir-related aliases omz tries to add (mostly bc it calls compinit)
 zstyle ':omz:directories' aliases no
 # load omz and plugins
