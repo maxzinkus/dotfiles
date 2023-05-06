@@ -33,7 +33,7 @@ set backupdir=~/.vim/backup
 set noswapfile
 set backupskip=/tmp/*
 " hidden tags file
-set tags+=.tags
+set tags+=.tags;expand('~');/
 " U is a reasonable inverse of u
 nnoremap U <C-R>
 " <count><C-e> moves the content <count> lines up
@@ -59,7 +59,7 @@ command W w
 command Q q
 command Wq wq
 command WQ wq
-if hostname() == 'zen'
+if filereadable(expand('~/.vim/vimrc.d/vimrc_custom_basic'))
     runtime vimrc.d/vimrc_custom_basic
 endif
 "}}}
@@ -146,20 +146,20 @@ noremap <RIGHT> <C-w>l
 " open without replacing current view
 set splitright
 set splitbelow
-if hostname() == 'zen'
+if filereadable(expand('~/.vim/vimrc.d/vimrc_custom_splits'))
     runtime vimrc.d/vimrc_custom_splits
 endif
 "}}}
 " Epilogue
 "{{{
 " Load plugins and generate help tags for everything - must be at end
-if hostname() == 'zen'
+if filereadable(expand('~/.vim/vimrc.d/vimrc_custom_plugins'))
     runtime vimrc.d/vimrc_custom_plugins
 endif
 packloadall
 silent! helptags ALL
 set secure
-if hostname() == 'zen'
+if filereadable(expand('~/.vim/vimrc.d/vimrc_custom_postrc'))
     runtime vimrc.d/vimrc_custom_postrc
 endif
 "}}}

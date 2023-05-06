@@ -3,7 +3,6 @@
 # from tpope https://tbaggery.com/2011/08/08/effortless-ctags-with-git.html
 
 set -e
-PATH="/usr/local/bin:$PATH"
 if [ -f "tags" ]
 then TAGFILE="tags"
 else TAGFILE=".tags"
