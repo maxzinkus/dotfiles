@@ -120,6 +120,7 @@ autocmd FileType html,xml,markdown,md,txt,text setlocal shiftwidth=2 tabstop=2
 autocmd FileType markdown,md,txt,text setlocal nofoldenable spell spelllang=en_us
 autocmd FileType gitcommit setlocal shiftwidth=2 tabstop=2 colorcolumn=73 nofoldenable spell spelllang=en_us
 autocmd FileType gitconfig setlocal shiftwidth=4 tabstop=4
+autocmd FileType git setlocal nomodeline
 autocmd FileType vim setlocal shiftwidth=4 tabstop=4 foldmethod=marker foldmarker=\"{{{,\"}}}
 autocmd FileType zsh setlocal nofoldenable
 autocmd FileType vimwiki setlocal modeline spell spelllang=en_us
