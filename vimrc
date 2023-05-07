@@ -10,8 +10,6 @@ set ttyfast
 set lazyredraw
 " auto-update if changes are detected
 set autoread
-" auto-cd to working file dir
-set autochdir
 " colors!
 set background=dark
 colorscheme onedark
