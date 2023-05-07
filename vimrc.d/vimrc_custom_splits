@@ -16,4 +16,5 @@ endfunction
 au VimResized * :call s:CheckClosePanes()
 
 " edit file path under cursor (relative to :pwd)
-noremap <leader><cr> <C-w>gf
+map gf :e <cfile><CR>
+noremap <leader><cr> gf
