@@ -125,6 +125,7 @@ alias ls='exa'
 alias la='exa -a'
 alias ll='exa -l@ --git'
 alias exa='exa -F --group-directories-first --color-scale --color=automatic'
+alias gl='git log --name-only --pretty=full | view -'
 alias wim='vim ~/.vimwiki/index.md'
 
 #zprof # uncomment for startup profiling
