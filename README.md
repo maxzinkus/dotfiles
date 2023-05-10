@@ -11,19 +11,17 @@ equivalent of Debian*
 #logic
 ```
 
-## from apt
-* tmux
 * vim
 * fdfind
 * ripgrep
+* diff-so-fancy
+* fzf
+* exa
 
 ## oh-my-zsh plugins/custom themes
 * zsh-autosuggestions
 * fast-syntax-highlighting
-* forgit
 * colored-man-pages
-* powerlevel10k
-* fzf-tab
 
 ## vim plugins
 * ale
@@ -36,12 +34,6 @@ equivalent of Debian*
 * VimWiki
 * tagbar
 * NERDTree
-* rust
 * vim-matchup
 * vim-repeat
 * vim-surround
-
-## other
-* diff-so-fancy
-* fzf
-* exa
