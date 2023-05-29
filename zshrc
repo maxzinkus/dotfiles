@@ -49,9 +49,6 @@ HIST_IGNORE_ALL_DUPS="true"
 HIST_SAVE_NO_DUPS="true"
 HIST_IGNORE_SPACE="true"
 
-# disable lesshst
-export LESSHISTFILE="-"
-
 # zsh-autosuggestions
 export ZSH_AUTOSUGGEST_USE_ASYNC="true"
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=80
@@ -125,5 +122,8 @@ alias ll='exa -l@ --git'
 alias exa='exa -F --group-directories-first --color-scale --color=automatic'
 alias gl='git log --name-status --pretty=full | view -'
 alias wim='vim ~/.vimwiki/index.md'
+
+# disable lesshst
+export LESSHISTFILE=/dev/null
 
 #zprof # uncomment for startup profiling
