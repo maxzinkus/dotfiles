@@ -65,8 +65,6 @@ export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/ripgrep.conf"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND="fd --type file --hidden --exclude .git --exclude .vim --color=always"
 export FZF_DEFAULT_OPTS="--ansi"
-# Using highlight (http://www.andre-simon.de/doku/highlight/en/highlight.html)
-export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 
 # always use base clang configuration
 clang () { $(which clang) --config "$HOME/.config/clang/clang.cfg" $@ }
@@ -103,8 +101,19 @@ zstyle ':omz:directories' aliases no
 # load omz and plugins
 source $ZSH/oh-my-zsh.sh
 
+# post-source key bindings
+function fzf-history-widget-accept() {
+  fzf-history-widget
+  zle accept-line
+}
+zle     -N     fzf-history-widget-accept
+bindkey '^R'   fzf-history-widget-accept
+bindkey -r '^T'  # remove fzf ctrl-t
+bindkey -r '^[c' # and escape-c
+
 # custom aliases
 alias a='alpine'
+alias bi='brew info'
 alias python='python3'
 alias grep='rg'
 alias find='fd'
@@ -121,12 +130,11 @@ alias la='exa -a'
 alias ll='exa -l@ --git'
 alias exa='exa -F --group-directories-first --color-scale --color=automatic'
 alias gl='git log --name-status --pretty=full | view -'
-alias wim='vim ~/.vimwiki/index.md'
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+alias y='yazi'
 
 # disable lesshst
 export LESSHISTFILE=/dev/null
-
-#zprof # uncomment for startup profiling
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -142,3 +150,5 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+#zprof # uncomment for startup profiling
