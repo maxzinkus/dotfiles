@@ -5,3 +5,5 @@ hi! NonText guibg=NONE
 hi! CursorLineNr guibg=#777777
 hi! LineNr guibg=NONE
 hi! Todo guibg=#777777
+
+hi! link TagbarSignature Comment
