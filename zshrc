@@ -67,7 +67,7 @@ export FZF_DEFAULT_COMMAND="fd --type file --hidden --exclude .git --exclude .vi
 export FZF_DEFAULT_OPTS="--ansi"
 
 # always use base clang configuration
-clang () { $(which clang) --config "$HOME/.config/clang/clang.cfg" $@ }
+clang () { /usr/bin/clang --config "$HOME/.config/clang/clang.cfg" $@ }
 
 # check for and activate python3 venv after each cd
 chpwd_functions=( try_activate )
@@ -131,7 +131,14 @@ alias ll='exa -l@ --git'
 alias exa='exa -F --group-directories-first --color-scale --color=automatic'
 alias gl='git log --name-status --pretty=full | view -'
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
-alias y='yazi'
+function y() {
+	tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+	yazi --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
 
 # disable lesshst
 export LESSHISTFILE=/dev/null
