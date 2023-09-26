@@ -132,12 +132,14 @@ alias exa='exa -F --group-directories-first --color-scale --color=automatic'
 alias gl='git log --name-status --pretty=full | view -'
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 function y() {
-	tmp="$(mktemp -t "yazi-cwd.XXXXX")"
-	yazi --cwd-file="$tmp"
-	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
+    tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+    yazi --cwd-file="$tmp"
+    if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ]; then
+        kitty @ send-text --match neighbor:top " cd -- $cwd\n" ;
+        cd -- "$cwd" ;
+        kitty @ send-text --match neighbor:top " tput clear\n" ;
+    fi
+    rm -f -- "$tmp"
 }
 
 # disable lesshst
