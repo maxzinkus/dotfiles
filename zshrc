@@ -135,11 +135,17 @@ function y() {
     tmp="$(mktemp -t "yazi-cwd.XXXXX")"
     yazi --cwd-file="$tmp"
     if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ]; then
-        kitty @ send-text --match neighbor:top " cd -- $cwd\n" ;
-        cd -- "$cwd" ;
+        kitty @ send-text --match neighbor:top " chdir -- $cwd\n" ;
+        chdir -- "$cwd" ;
         kitty @ send-text --match neighbor:top " tput clear\n" ;
     fi
     rm -f -- "$tmp"
+}
+function cd() {
+    chdir $@
+    kitty @ send-text --match neighbor:bottom "g"
+    kitty @ send-text --match neighbor:bottom " "
+    kitty @ send-text --match neighbor:bottom "$(pwd)\r"
 }
 
 # disable lesshst
