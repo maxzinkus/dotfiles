@@ -112,16 +112,12 @@ bindkey -r '^T'  # remove fzf ctrl-t
 bindkey -r '^[c' # and escape-c
 
 # custom aliases
-alias a='alpine'
 alias bi='brew info'
 alias python='python3'
 alias grep='rg'
 alias find='fd'
 alias dc='cd'
 alias gs='git status'
-alias gb='git branch -a'
-alias gc='git commit'
-alias gp='git push'
 alias mv='mv -i'
 alias cp='cp -i'
 alias rm='rm -i'
@@ -129,25 +125,9 @@ alias ls='eza'
 alias la='eza -a'
 alias ll='eza -l@ --git'
 alias eza='eza -F --group-directories-first --color-scale --color=automatic'
-alias gl='git log --name-status --pretty=full | view -'
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 
 # disable lesshst
 export LESSHISTFILE=/dev/null
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-        . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
 #zprof # uncomment for startup profiling
