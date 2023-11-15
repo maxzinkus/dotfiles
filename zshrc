@@ -124,7 +124,7 @@ alias rm='rm -i'
 alias ls='eza'
 alias la='eza -a'
 alias ll='eza -l@ --git'
-alias eza='eza -F --group-directories-first --color-scale --color=automatic'
+alias eza='eza -F --group-directories-first --color=automatic'
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 
 # disable lesshst
