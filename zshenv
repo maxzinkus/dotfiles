@@ -7,6 +7,8 @@ export HOMEBREW_NO_EMOJI=1
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_ENV_HINTS=1
 
+export ICLOUD_DRIVE="$HOME/Library/Mobile Documents/com~apple~CloudDocs"
+
 export MANPATH="/usr/local/man:$MANPATH"
 
 export GOPATH="$HOME/.go"
