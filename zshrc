@@ -112,6 +112,7 @@ bindkey -r '^T'  # remove fzf ctrl-t
 bindkey -r '^[c' # and escape-c
 
 # custom aliases
+alias u='update'
 alias bi='brew info'
 alias python='python3'
 alias grep='rg'
