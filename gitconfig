@@ -3,11 +3,18 @@
     pager = diff-so-fancy | less --tabs=4 -RFX
 [merge]
     tool = vimdiff
-    conflictstyle = diff3
+    conflictstyle = zdiff3
 [mergetool]
     prompt = false
 [status]
     show-untracked-files = all
+	submoduleSummary = true
+[diff]
+    algorithm = histogram
+	submodule = log
+	colorMoved = default
+	colorMovedWS = allow-indentation-change
+	context = 10
 [color]
     ui = true
 [color "diff-highlight"]
@@ -28,13 +35,43 @@
 [init]
     templatedir = ~/.config/git_template
 	defaultBranch = main
+[url "git@github.com:"]
+	pushInsteadOf = "https://github.com/"
+    insteadOf = "gh:"
 [alias]
     ctags = !.git/hooks/ctags
+[rebase]
+    autosquash = true
+	missingCommitsCheck = error
 [rerere]
     enabled = true
 [pull]
     rebase = false
+[push]
+    default = simple
+	autoSetupRemote = true
+	followtags = true
 [credential]
 	helper = osxkeychain
-[push]
-	autoSetupRemote = true
+[commit]
+    verbose = true
+[help]
+    autocorrect = prompt
+[transfer]
+	fsckObjects = true
+[receive]
+	fsckObjects = true
+[fetch]
+	fsckObjects = true
+	prune = true
+	prunetags = true
+[submodule]
+	recurse = true
+[branch]
+	sort = -committerdate
+[tag]
+	sort = taggerdate
+[gpg]
+	format = ssh
+[log]
+	date = iso
