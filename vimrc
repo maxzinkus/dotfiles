@@ -123,7 +123,6 @@ autocmd FileType gitconfig setlocal shiftwidth=4 tabstop=4
 autocmd FileType git setlocal nomodeline
 autocmd FileType vim setlocal shiftwidth=4 tabstop=4 foldmethod=marker foldmarker=\"{{{,\"}}}
 autocmd FileType zsh setlocal nofoldenable
-autocmd FileType vimwiki setlocal modeline spell spelllang=en_us
 autocmd FileType tex,plaintex setlocal foldmethod=marker foldmarker=%{{{,%}}} spell spelllang=en_us
 autocmd FileType ale-preview setlocal nofoldenable
 autocmd FileType make setlocal shiftwidth=8 tabstop=8
