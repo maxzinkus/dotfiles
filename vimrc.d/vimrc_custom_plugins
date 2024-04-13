@@ -170,11 +170,6 @@ noremap <leader>3 :diffget REMOTE; diffupdate<cr>
 " :wqa to accept and quit
 " :cq to reject and quit
 "}}}
-" - VimWiki
-"{{{
-let g:vimwiki_global_ext = 0 " disable vimwiki outside vimwiki directory
-let g:vimwiki_list = [{'path': '~/.vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
-"}}}
 " - Startify
 "{{{
 " returns all modified files of the current git repo
