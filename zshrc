@@ -77,8 +77,6 @@ chpwd_functions=( try_activate )
 plugins=(
     zsh-autosuggestions
     colored-man-pages
-    fd
-    ripgrep
     safe-paste
 )
 
