@@ -62,9 +62,11 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/ripgrep.conf"
 
 # fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND="fd --type file --hidden --exclude .git --exclude .vim --color=always"
+export FZF_DEFAULT_COMMAND="fd --type file --hidden --exclude .git --exclude .vim --color always"
 export FZF_DEFAULT_OPTS="--ansi"
+export FZF_ALT_C_COMMAND=""
+export FZF_CTRL_T_COMMAND=""
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # always use base clang configuration
 clang () { /usr/bin/clang --config "$HOME/.config/clang/clang.cfg" $@ }
@@ -75,10 +77,10 @@ chpwd_functions=( try_activate )
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 plugins=(
-    zsh-autosuggestions
     colored-man-pages
     safe-paste
 )
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # add custom completion paths for brew and user
 if [ -d "/opt/homebrew/share/zsh/site-functions" ] ; then
@@ -111,7 +113,7 @@ bindkey -r '^[c' # and escape-c
 
 # custom aliases
 alias u='update'
-alias bi='brew info'
+alias vim='nvim'
 alias python='python3'
 alias grep='rg'
 alias find='fd'
