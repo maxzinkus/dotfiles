@@ -131,6 +131,17 @@ alias ll='eza -l@ --git'
 alias eza='eza -F --group-directories-first --color=automatic'
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 
+uvshebang='#!/usr/bin/env -S uv run --script
+# /// script
+# dependencies = []
+# ///'
+
+function uvpkg() {
+if [[ -z "$1" ]] || [[ ! -f "$1" ]] ; then echo "Usage: uvpkg <python file>" >&2 ; return 1
+else mv "$1" "$1.bak" && echo "$uvshebang" > "$1" && cat "$1.bak" >> "$1" && rm -f "$1.bak"
+fi
+}
+
 # disable lesshst
 export LESSHISTFILE=/dev/null
 
