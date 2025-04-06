@@ -128,6 +128,7 @@ alias rm='rm -i'
 alias ls='eza'
 alias la='eza -a'
 alias ll='eza -l@ --git'
+alias ssh-add='ssh-add --apple-use-keychain'
 alias eza='eza -F --group-directories-first --color=automatic'
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 
