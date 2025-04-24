@@ -134,6 +134,7 @@ alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 function ssh-add() {
     /usr/bin/ssh-add --apple-use-keychain $@
 }
+ssh-add --apple-load-keychain ~/.ssh/*_ed25519 ~/.ssh/*_ecdsa >/dev/null 2>&1 &|
 
 uvshebang='#!/usr/bin/env -S uv run --script
 # /// script
