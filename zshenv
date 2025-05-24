@@ -16,16 +16,21 @@ export GOPATH="$HOME/.go"
 function try_activate() {
     swd="$(pwd)"
     cwd="$swd"
-    while [ "$cwd" != "$HOME" -a "$cwd" != "/" ]
-    do if [ -d "venv" ]
-        then source venv/bin/activate ; break
-        else cd -q .. ; cwd="$(pwd)"
+    while [[ "$cwd" != "$HOME" ]] && [[ "$cwd" != "/" ]]; do
+        venv=""
+        if [ -d "venv" ]; then
+            venv="venv"
+        elif [ -d ".venv" ]; then
+            venv=".venv"
+        fi
+        if [ -n "$venv" ]; then
+            source "$venv/bin/activate" ; break
+        else
+            cd -q .. ; cwd="$(pwd)"
         fi
     done
-    if [ "$cwd" = "$HOME" -o "$cwd" = "/" ]
-    then if [ "$VIRTUAL_ENV" ]
-        then deactivate
-        fi
+    if ([[ "$cwd" = "$HOME" ]] || [[ "$cwd" = "/" ]]) && [[ "${VIRTUAL_ENV:-x}" != "x" ]] && command -v deactivate >/dev/null ; then
+        deactivate
     fi
     cd -q "$swd"
 }
